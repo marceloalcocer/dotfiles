@@ -1,0 +1,138 @@
+"""System Preferences"""
+let homedirectoy = "/home/malcocer"
+let barposition = "bottom"
+let locale = "uk"
+let deafultengine = "google"
+let mapleader = ","
+let scrollduration = 200
+set smoothscroll
+set autohidecursor
+set numerichints
+set typelinkhints
+let vimport = 8001
+let vimcommand = "gvim -f"
+
+"""Search Engines"""
+let searchengine googlescholar = "http://scholar.google.com/scholar?hl=en&q=%s"
+let searchengine googlemaps= "https://www.google.com/maps/preview?q=%s"
+let searchengine lexin = "http://folkets-lexikon.csc.kth.se/folkets/folkets.html#lookup&%s&0"
+let searchengine w3schools = "http://www.google.com/search?sitesearch=www.w3schools.com&as_q=%s"
+let searchengine matplotlib = "https://www.google.com/search?as_q=%s&as_sitesearch=matplotlib.org"
+let searchengine scipy = "https://www.google.com/search?as_q=%s&as_sitesearch=docs.scipy.org"
+let searchengine python = "https://docs.python.org/3.7/search.html?q=%s&check_keywords=yes&area=default"
+let searchengine facebok = "https://www.facebook.com/search/top/?q=%s&opensearch=1"
+let searchengine thesaurus = "http://thesaurus.com/browse/%s?s=t"
+let searchengine cplusplus = "http://www.cplusplus.com/search.do?q=%s"
+let searchengine stackoverflow= "http://stackoverflow.com/search?q=%s"
+let searchengine ubuntu = "https://packages.ubuntu.com/search?keywords=%s&searchon=names&suite=all&section=all"
+let searchalias yt = "youtube"
+let searchalias wi = "wikipedia"
+let searchalias gs = "googlescholar"
+let searchalias gm = "google-maps"
+let searchalias lx = "lexin"
+let searchalias w3 = "w3Schools"
+let searchalias mpl = "matplotlib"
+let searchalias sp = "scipy"
+let searchalias py = "python"
+let searchalias fb = "facebook"
+let searchalias th = "thesaurus"
+let searchalias cpp = "cplusplus"
+let searchalias so = "stackoverflow"
+let searchalias ub = "ubuntu"
+let completionengines = ["google","wikipedia","google-maps","youtube"]
+
+"""Custom Buffer"""
+map d closeTab
+map u lastClosedTab
+map <Leader>r previousTab
+map <Leader>t nextTab
+map a createBookmark
+map s :open g<space>
+map S :tabopen g<space>
+map <Leader>s :open wi<space> 
+map <Leader>S :tabopen wi<space>
+map <Leader>x :open https://dx.doi.org/
+map <Leader>X :tabopen https://dx.doi.org/
+map <Leader>y "+y
+map <Leader>p "+p
+map <A-j> scrollPageDown
+map <C-d> scrollPageDown
+map <A-k> scrollPageUp
+map <C-u> scrollPageUp
+map <space> scrollFullPageDown
+map <C-f> scrollFullPageDown
+map <S-space> scrollFullPageUp
+map <C-b> scrollFullPageUp
+map <C-z> passKeys
+map ZZ :chrome://restart<CR>
+map gf :viewSource!
+map <C-c> cancelWebRequest
+map R reloadTabUncached
+map <Leader>F createEditHint
+
+"""Quick Marks"""
+let qmark q = ["https://mail.google.com"]
+let qmark w = ["http://www.hotmail.com"]
+let qmark e = ["https://webmail.lu.se/"]
+let qmark a = ["https://calendar.google.com/"]
+let qmark s = ["https://scholar.google.com/"]
+let qmark d = ["https://drive.google.com/"]
+let qmark z = ["http://www.facebook.com/"]
+let qmark x = ["http://web.skype.com/"]
+let qmark n = ["http://news.bbc.co.uk/"]
+let qmark m = ["http://www.feedly.com/"]
+let qmark y = ["http://www.youtube.com/"]
+let qmark g = ["https://github.com/marceloalcocer"]
+let qmark h = ["https://marceloalcocer.github.io"]
+let qmark j = ["http://www.chemphys.lu.se"]
+let qmark k = ["http://acq.2d.chemphys.lu.se"]
+let qmark l = ["https://trello.com"]
+
+"""Site Specific"""
+site "https://mail.google.com/*" {
+	unmap j
+	unmap k
+	unmap c
+	unmap /
+	unmap n
+	unmap p
+	unmap e
+	unmap ]
+	unmap s
+	unmap P
+	unmap a
+	unmap r
+	unmap f
+	unmap #
+	unmap x
+	map ? <S-?>
+}
+site "https://calendar.google.com/*" {
+	unmap j
+	unmap n
+	unmap r
+	unmap t
+	unmap +
+	unmap /
+	unmap s
+	unmap 1
+	unmap d
+	unmap 2
+	unmap w
+	unmap 3
+	unmap m
+	unmap 4
+	unmap x
+	unmap 5
+	unmap a
+	unmap c
+	unmap e
+	unmap z
+}
+site "*://feedly.com/*" {
+	unmap j
+	unmap k
+	unmap m
+	unmap v
+	unmap s
+}
