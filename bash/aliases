@@ -1,0 +1,12 @@
+# Listings
+alias ll='ls --group-directories-first -l'
+alias la='ls --group-directories-first -la'
+
+# Clipboard
+alias clipboard='xclip -i -selection clipboard'
+
+# Hexdump
+alias hexdump='hexdump -C'
+
+# Battery
+alias battery='cat /sys/class/power_supply/BAT0/capacity'

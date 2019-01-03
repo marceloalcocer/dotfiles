@@ -1,0 +1,74 @@
+" System Configuration "
+set nocompatible
+set gfn=deja\ vu\ sans\ mono\ 12
+colorscheme slate
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set visualbell
+"set cursorline
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=1
+set relativenumber
+"set undofile
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:␣,trail:·,eol:↲
+set list
+set spellfile=~/.vim/spell/custom-misc.utf-8.add
+
+" Mappings "
+let mapleader = ","
+map <leader>t :bn<cr>
+map <leader>r :bp<cr>
+nnoremap <leader>/ :noh<cr>
+nnoremap <tab> %
+vnoremap <tab> %
+nnoremap <leader>ev <C-w><C-v><C-w><C-l>:e $MYVIMRC<cr>
+nnoremap <space> <C-f>
+nnoremap <S-space> <C-b>
+nnoremap <A-j> <C-d>
+nnoremap <A-k> <C-u>
+nnoremap <A-i> ^
+nnoremap <A-a> $
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+nnoremap j gj
+nnoremap k gk
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-w><k2> :resize 35<cr>
+nnoremap <C-w><k8> :resize 50<cr>
+nnoremap <C-w><k4> :vertical resize 150<cr>
+nnoremap <C-w><k6> :vertical resize 200<cr>
+nnoremap <leader>s 1z=
+nnoremap <leader>S z=
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
+nnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+nnoremap <leader>qw :set wrap!<cr>
+nnoremap <leader>qs :set spell!<cr>
+
+" Filetype Handling "
+filetype indent on
+autocmd FileType gitcommit setlocal spell textwidth=72

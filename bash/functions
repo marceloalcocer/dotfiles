@@ -1,0 +1,4 @@
+# Listings
+lc(){
+	ll --color $1 | less -R
+}

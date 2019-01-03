@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Description:	Dotfile installer
+# Author:	Marcelo JP Alcocer (marcelo.j.p.alcocer@gmail.com)
+# Date:		2019.01.03
+
+# Dotfile base directory
+dotbasedir="$(dirname $(realpath $0))"
+
+# Symlink function
+dotln(){
+	for dotfile in "${!dotdests[@]}"; do ln -sf "${dotdir}/${dotfile}" "${dotdests[${dotfile}]}"; done
+}
+
+# General dotfiles
+dotdir=${dotbasedir}
+declare -A dotdests=(
+	["profile"]="${HOME}/.profile"
+	["inputrc"]="${HOME}/.inputrc"
+)
+dotln
+
+# Bash dotfiles
+dotdir="${dotbasedir}/bash"
+declare -A dotdests=(
+	["aliases"]="${HOME}/.bash_aliases"
+	["env"]="${HOME}/.bash_env"
+	["functions"]="${HOME}/.bash_functions"
+	["logout"]="${HOME}/.bash_logout"
+	["rc"]="${HOME}/.bashrc"
+)
+dotln
+
+# Vim dotfiles
+dotdir="${dotbasedir}/vim"
+declare -A dotdests=(
+	["rc"]="${HOME}/.vimrc"
+)
+dotln
+
+# Git dotfiles
+dotdir="${dotbasedir}/git"
+declare -A dotdests=(
+	["config"]="${HOME}/.gitconfig"
+)
+dotln
