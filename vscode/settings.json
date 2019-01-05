@@ -1,0 +1,197 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.fontSize": 12,
+    "editor.insertSpaces": false,
+    "editor.showFoldingControls": "always",
+    "editor.renderWhitespace": "boundary",
+    "editor.minimap.enabled": false,
+    "editor.rulers": [80],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80,
+    "workbench.activityBar.visible": false,
+    "terminal.integrated.fontSize": 12,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Monokai",
+    "window.zoomLevel": 0,
+    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "yapf",
+    "python.formatting.yapfArgs": [
+        "--style",
+        "/home/malcocer/.config/yapf/mapep8.ini"
+    ],
+    "python.formatting.autopep8Args": [
+        "--ignore","W191,E111,E101"
+    ],
+    "python.autoComplete.extraPaths": [
+        "/home/malcocer/Coding/transient"
+    ],
+    "python.jediEnabled": false,
+    // "python.autoComplete.preloadModules": [
+    //     "numpy",
+    //     "matplotlib",
+    //     "xarray"
+    // ],
+    // "python.unitTest.unittestEnabled": true,
+    "vim.textwidth": 80,
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.replace": "block-outline",
+    "vim.cursorStylePerMode.visual": "block",
+    "vim.cursorStylePerMode.visualblock": "block",
+    "vim.cursorStylePerMode.visualline": "block",
+    "vim.leader": ",",
+    "vim.foldfix": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>","t"],
+            "after": [],
+            "commands":[
+                {
+                    "command": ":tabnext",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<leader>","r"],
+            "after": [],
+            "commands":[
+                {
+                    "command": ":tabprevious",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<space>"],
+            "after": ["<C-f>"]
+        },
+        {
+            "before": ["<C-l>"],
+            "after": ["<C-w>","l"]
+        },
+        {
+            "before": ["<C-h>"],
+            "after": ["<C-w>","h"]
+        },
+        {
+            "before": ["<shift-space>"],
+            "after": ["C-b>"]
+        },
+        {
+            "before": ["<alt-j>"],
+            "after": ["<C-d>"]
+        },
+        {
+            "before": ["<alt-k>"],
+            "after": ["<C-u>"]
+        },
+        {
+            "before": ["<alt-i>"],
+            "after": ["^"]
+        },
+        {
+            "before": [",","y"],
+            "after": ["\"*y"]
+        },
+        {
+            "before": [",","p"],
+            "after": ["\"*p"]
+        },
+        {
+            "before": [",","P"],
+            "after": ["\"*P"]
+        },
+        {
+            "before": ["<leader>","S"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "editor.action.quickFix",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["]","s"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "editor.action.marker.next",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["[","s"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "editor.action.marker.prev",
+                    "args": []
+                }
+            ]
+        }
+    ],
+    "cSpell.language": "en-GB",
+    "cSpell.dictionaryDefinitions": [
+        {
+            "name": "custom-misc",
+            "path": "/home/malcocer/.vim/spell/custom-misc.utf-8.add"
+        },
+        {
+            "name": "custom-python",
+            "path": "/home/malcocer/.vim/spell/custom-python.utf-8.add"
+        }
+    ],
+    "cSpell.dictionaries": [
+        "custom-misc"
+    ],
+    "cSpell.languageSettings": [
+        {
+            "languageId": "python",
+            "dictionaries": ["custom-python"]
+        }
+    ],
+    "todo-tree.regex": "((//|#|<!--|;|/\\*|^)*\\s*($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.tags": [
+        "TODO:",
+        "REFACTOR:",
+        "ENHANCEMENT:"
+    ],
+    "todo-tree.grouped": true,
+    "todo-tree.expanded": true,
+    "todo-tree.defaultHighlight": {
+        "iconColour": "green",
+        "background": "green",
+        "foreground": "white",
+        "type": "text"
+    },
+    "todo-tree.customHighlight": {
+       "TODO:": {
+           "iconColour": "#aa6666",
+           "background": "#aa6666",
+           "foreground": "white",
+           "type": "text"
+       },
+       "REFACTOR:": {
+           "iconColour": "#aa9933",
+           "background": "#aa9933",
+           "foreground": "white",
+           "type": "text"
+       },
+       "ENHANCEMENT:": {
+           "iconColour": "#66aa66",
+           "background": "#66aa66",
+           "foreground": "white",
+           "type": "text"
+       }
+    },
+    "restructuredtext.linter.run": "onSave",
+    "editor.minimap.renderCharacters": false,
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.showStatus": false
+}

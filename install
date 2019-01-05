@@ -48,3 +48,12 @@ declare -A dotdests=(
 	["config"]="${HOME}/.gitconfig"
 )
 dotln
+
+# VSCode dotfiles
+dotdir="${dotbasedir}/vscode"
+declare -A dotdests=(
+	["keybindings.json"]="${HOME}/.config/Code - OSS/User/"
+	["settings.json"]="${HOME}/.config/Code - OSS/User/"
+	["snippets"]="${HOME}/.config/Code - OSS/User/"
+)
+dotln
