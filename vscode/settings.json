@@ -19,8 +19,7 @@
     "python.linting.pylintEnabled": true,
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
-        "--style",
-        "/home/malcocer/.config/yapf/yapf.ini"
+        "--style","/home/malcocer/.config/yapf/yapf.ini"
     ],
     "python.formatting.autopep8Args": [
         "--ignore","W191,E111,E101"
@@ -183,6 +182,9 @@
        }
     },
     "restructuredtext.linter.run": "onSave",
+  "restructuredtext.linter.extraArgs": [
+        "--ignore","D001"
+  ],
     "restructuredtext.confPath": "${workspaceFolder}/docs",
     "editor.minimap.renderCharacters": false,
     "cSpell.diagnosticLevel": "Hint",
