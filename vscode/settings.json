@@ -20,21 +20,13 @@
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
         "--style",
-        "/home/malcocer/.config/yapf/mapep8.ini"
+        "/home/malcocer/.config/yapf/yapf.ini"
     ],
     "python.formatting.autopep8Args": [
         "--ignore","W191,E111,E101"
     ],
-    "python.autoComplete.extraPaths": [
-        "/home/malcocer/Coding/transient"
-    ],
     "python.jediEnabled": false,
-    // "python.autoComplete.preloadModules": [
-    //     "numpy",
-    //     "matplotlib",
-    //     "xarray"
-    // ],
-    // "python.unitTest.unittestEnabled": true,
+    "python.unitTest.unittestEnabled": true,
     "vim.textwidth": 80,
     "vim.cursorStylePerMode.insert": "line",
     "vim.cursorStylePerMode.normal": "block",
@@ -191,7 +183,10 @@
        }
     },
     "restructuredtext.linter.run": "onSave",
+    "restructuredtext.confPath": "${workspaceFolder}/docs",
     "editor.minimap.renderCharacters": false,
     "cSpell.diagnosticLevel": "Hint",
-    "cSpell.showStatus": false
+    "cSpell.showStatus": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false
 }

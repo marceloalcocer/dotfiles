@@ -49,6 +49,13 @@ declare -A dotdests=(
 )
 dotln
 
+# Python dotfiles
+dotdir="${dotbasedir}/python"
+declare -A dotdests=(
+	["yapf.ini"]="${HOME}/.config/yapf/yapf.ini"
+)
+dotln
+
 # VSCode dotfiles
 dotdir="${dotbasedir}/vscode"
 declare -A dotdests=(
