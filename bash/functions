@@ -92,14 +92,31 @@ export_ps1(){
 		# User
 		local sgr_user=""
 		sgr_user="${sgr_user}${bold}"				# Bold
-		sgr_user="${sgr_user}\[${esc}[31m\]"			# FG: Red
+		sgr_user="${sgr_user}\[${esc}[38;5;214m\]"		# FG: MAXIV Orange: #fea901 (254, 169, 1)
 		ps1_user="${sgr_user}${ps1_user}${end}"
 		
 		# Host
 		local sgr_host=""
-		sgr_host="${sgr_host}${bold}"				# Bold
-		sgr_host="${sgr_host}\[${esc}[31m\]"			# FG: Red
-		ps1_host="${sgr_host}${ps1_host}${end}"
+		case "${HOSTNAME}" in
+		w-*)
+			sgr_host="${sgr_host}${bold}"			# Bold
+			sgr_host="${sgr_host}\[${esc}[97m\]"		# FG: Bright white
+			;;
+		b-*)
+			sgr_host="${sgr_host}${bold}"			# Bold
+			sgr_host="${sgr_host}\[${esc}[94m\]"		# FG: Bright blue
+			;;
+		g-*)
+			sgr_host="${sgr_host}${bold}"			# Bold
+			sgr_host="${sgr_host}\[${esc}[32m\]"		# FG: Green
+			;;
+		ogoshi)
+			sgr_host="${sgr_host}${bold}"			# Bold
+			sgr_host="${sgr_host}\[${esc}[31m\]"		# FG: Red
+			;;
+		*)
+			;;
+		esac
 		
 		# Working directory
 		local sgr_wd=""
@@ -129,3 +146,4 @@ export_ps1(){
 lc(){
 	ll --color $1 | less -R
 }
+
