@@ -117,6 +117,7 @@ export_ps1(){
 		*)
 			;;
 		esac
+		ps1_host="${sgr_host}${ps1_host}${end}"
 		
 		# Working directory
 		local sgr_wd=""
