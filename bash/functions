@@ -148,3 +148,12 @@ lc(){
 	ll --color $1 | less -R
 }
 
+
+# Toggle touchpad
+toggle_touchpad(){
+	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad send-events)" = "'enabled'" ]; then
+		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'disabled'
+	else
+		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
+	fi
+}
