@@ -190,5 +190,6 @@
     "cSpell.diagnosticLevel": "Hint",
     "cSpell.showStatus": false,
     "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false
+    "explorer.confirmDragAndDrop": false,
+    "window.menuBarVisibility": "toggle"
 }
