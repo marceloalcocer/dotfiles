@@ -129,3 +129,12 @@ export_ps1(){
 lc(){
 	ll --color $1 | less -R
 }
+
+# su with xauth
+sux(){
+	local cookie=$(xauth list | head -n 1)
+	cookie=${cookie/:/:0}							# Append display
+	local xauthority="/home/$1/.Xauthority"					# Define Xauthority file
+	sudo XAUTHORITY="$xauthority" su -c "xauth add ${cookie}" $1		# Update .Xauthority file
+	sudo XAUTHORITY="$xauthority" su $1
+}
