@@ -7,7 +7,6 @@
 	st = status -s -b
 	br = branch
 	com = commit
-	log = log --decorate --all
 	glog = log --decorate --graph --all
 	co = checkout
 [merge]
