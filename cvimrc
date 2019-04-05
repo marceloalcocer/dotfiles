@@ -69,10 +69,11 @@ map <S-space> scrollFullPageUp
 map <C-b> scrollFullPageUp
 map <C-z> passKeys
 map ZZ :chrome://restart<CR>
-map gf :viewSource!
 map <C-c> cancelWebRequest
 map R reloadTabUncached
 map <Leader>F createEditHint
+map w :tabdetach<CR>
+map <Leader>w :tabattach<space>
 
 """Quick Marks"""
 let qmark q = ["https://mail.google.com"]
