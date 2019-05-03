@@ -165,3 +165,8 @@ toggle_touchpad(){
 		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
 	fi
 }
+
+# Backup copy
+bucp(){
+	cp "${1}" "${1}~"
+}
