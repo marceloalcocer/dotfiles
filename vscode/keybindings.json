@@ -9,15 +9,7 @@
 		"command": "-workbench.action.toggleSidebarVisibility"
 	},
 	{
-		"key": "ctrl+shift+`",
-		"command": "workbench.debug.action.focusRepl"
-	},
-	{
-		"key": "ctrl+pagedown",
-		"command": "workbench.action.terminal.focusNext"
-	},
-	{
-		"key": "ctrl+pageup",
-		"command": "workbench.action.terminal.focusPrevious"
+		"key": "ctrl+shift+t",
+		"command": "workbench.view.extension.test"
 	}
 ]
