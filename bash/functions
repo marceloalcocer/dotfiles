@@ -138,3 +138,8 @@ sux(){
 	sudo XAUTHORITY="$xauthority" su -c "xauth add ${cookie}" $1		# Update .Xauthority file
 	sudo XAUTHORITY="$xauthority" su $1
 }
+
+# Backup copy
+bucp(){
+	cp "${1}" "${1}~"
+}
