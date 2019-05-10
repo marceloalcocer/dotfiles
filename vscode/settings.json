@@ -156,8 +156,8 @@
     "todo-tree.grouped": true,
     "todo-tree.expanded": true,
     "todo-tree.defaultHighlight": {
-        "iconColour": "green",
-        "background": "green",
+        "iconColour": "#666666",
+        "background": "#666666",
         "foreground": "white",
         "type": "text"
     },
@@ -191,5 +191,7 @@
     "cSpell.showStatus": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "window.menuBarVisibility": "toggle"
+    "window.menuBarVisibility": "toggle",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
 }
