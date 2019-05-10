@@ -16,3 +16,6 @@ alias battery='cat /sys/class/power_supply/BAT0/capacity'
 
 # IcePAP CMS
 alias icepapcms='icepapcms --all-networks'
+
+# pgrep
+alias pgrep='pgrep -a -l -f'
