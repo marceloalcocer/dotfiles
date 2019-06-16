@@ -1,4 +1,5 @@
 " System Configuration "
+set nomodeline
 set nocompatible
 set gfn=deja\ vu\ sans\ mono\ 12
 colorscheme slate
