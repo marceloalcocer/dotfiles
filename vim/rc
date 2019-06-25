@@ -73,3 +73,5 @@ nnoremap <leader>qs :set spell!<cr>
 " Filetype Handling "
 filetype indent on
 autocmd FileType gitcommit setlocal spell textwidth=72
+autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
+autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
