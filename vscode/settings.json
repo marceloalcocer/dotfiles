@@ -19,7 +19,7 @@
     "python.linting.pylintEnabled": true,
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
-        "--style","/home/malcocer/.config/yapf/yapf.ini"
+        "--style","/home/maralc/.config/yapf/yapf.ini"
     ],
     "python.formatting.autopep8Args": [
         "--ignore","W191,E111,E101"
@@ -131,11 +131,11 @@
     "cSpell.dictionaryDefinitions": [
         {
             "name": "custom-misc",
-            "path": "/home/malcocer/.vim/spell/custom-misc.utf-8.add"
+            "path": "/home/maralc/.vim/spell/custom-misc.utf-8.add"
         },
         {
             "name": "custom-python",
-            "path": "/home/malcocer/.vim/spell/custom-python.utf-8.add"
+            "path": "/home/maralc/.vim/spell/custom-python.utf-8.add"
         }
     ],
     "cSpell.dictionaries": [
