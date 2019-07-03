@@ -69,6 +69,8 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 nnoremap <leader>qw :set wrap!<cr>
 nnoremap <leader>qs :set spell!<cr>
+command Term vs|:term ++curwin
+cnoreabbrev vterm Term
 
 " Filetype Handling "
 filetype indent on
