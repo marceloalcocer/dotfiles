@@ -1,4 +1,5 @@
 " System Configuration "
+set nomodeline
 set nocompatible
 set gfn=deja\ vu\ sans\ mono\ 12
 colorscheme slate
@@ -68,7 +69,11 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 nnoremap <leader>qw :set wrap!<cr>
 nnoremap <leader>qs :set spell!<cr>
+command Term vs|:term ++curwin
+cnoreabbrev vterm Term
 
 " Filetype Handling "
 filetype indent on
 autocmd FileType gitcommit setlocal spell textwidth=72
+autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
+autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
