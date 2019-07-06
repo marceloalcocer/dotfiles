@@ -132,10 +132,10 @@ lc(){
 
 # su with xauth
 sux(){
-	local cookie=$(xauth list | head -n 1)
+	local cookie=$(xauth list ${HOSTNAME}/unix:0)				# Extract xauth cookie
 	cookie=${cookie/:/:0}							# Append display
-	local xauthority="/home/$1/.Xauthority"					# Define Xauthority file
-	sudo XAUTHORITY="$xauthority" su -c "xauth add ${cookie}" $1		# Update .Xauthority file
+	local xauthority="/home/$1/.Xauthority"					# Define Xauthority file path
+	sudo XAUTHORITY="$xauthority" su -c "xauth add ${cookie}" $1		# Add cookie to Xauthority file
 	sudo XAUTHORITY="$xauthority" su $1
 }
 
