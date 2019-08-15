@@ -16,3 +16,6 @@ alias battery='cat /sys/class/power_supply/BAT0/capacity'
 
 # pgrep
 alias pgrep='pgrep -a -l -f'
+
+# Polite sudo
+alias please='sudo'
