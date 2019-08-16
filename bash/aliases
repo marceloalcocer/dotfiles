@@ -19,3 +19,6 @@ alias icepapcms='icepapcms --all-networks'
 
 # pgrep
 alias pgrep='pgrep -a -l -f'
+
+# Polite sudo
+alias please='sudo'
