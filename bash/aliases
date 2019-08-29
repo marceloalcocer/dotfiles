@@ -22,3 +22,6 @@ alias pgrep='pgrep -a -l -f'
 
 # Polite sudo
 alias please='sudo'
+
+# wttr.in
+alias wttr='curl https://v2.wttr.in/'
