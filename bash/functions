@@ -170,3 +170,8 @@ toggle_touchpad(){
 bucp(){
 	cp "${1}" "${1}~"
 }
+
+# Filesystem hyperlink
+hyln(){
+	echo -e "<html><head><meta http-equiv=\"refresh\" content=\"0; url=${1}\"/></head></html>" > "${2}"
+}
