@@ -175,3 +175,9 @@ bucp(){
 hyln(){
 	echo -e "<html><head><meta http-equiv=\"refresh\" content=\"0; url=${1}\"/></head></html>" > "${2}"
 }
+
+# Open alfresco document
+alfresco(){
+	local tmp=$(date | md5sum)
+	curl -H "cookie: $(cat ~/.alfresco)" "${1}" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
+}
