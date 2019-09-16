@@ -148,9 +148,9 @@
         }
     ],
     "restructuredtext.linter.run": "onSave",
-  "restructuredtext.linter.extraArgs": [
+    "restructuredtext.linter.extraArgs": [
         "--ignore","D001"
-  ],
+    ],
     "restructuredtext.confPath": "${workspaceFolder}/docs",
     "editor.minimap.renderCharacters": false,
     "cSpell.diagnosticLevel": "Hint",
