@@ -4,7 +4,7 @@
     "editor.insertSpaces": false,
     "editor.showFoldingControls": "always",
     "editor.renderWhitespace": "boundary",
-    "editor.minimap.enabled": false,
+    "editor.minimap.enabled": true,
     "editor.rulers": [80],
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 80,
@@ -147,44 +147,10 @@
             "dictionaries": ["custom-python"]
         }
     ],
-    "todo-tree.regex": "((//|#|<!--|;|/\\*|^)*\\s*($TAGS)|^\\s*- \\[ \\])",
-    "todo-tree.tags": [
-        "TODO:",
-        "REFACTOR:",
-        "ENHANCEMENT:"
-    ],
-    "todo-tree.grouped": true,
-    "todo-tree.expanded": true,
-    "todo-tree.defaultHighlight": {
-        "iconColour": "#666666",
-        "background": "#666666",
-        "foreground": "white",
-        "type": "text"
-    },
-    "todo-tree.customHighlight": {
-       "TODO:": {
-           "iconColour": "#aa6666",
-           "background": "#aa6666",
-           "foreground": "white",
-           "type": "text"
-       },
-       "REFACTOR:": {
-           "iconColour": "#aa9933",
-           "background": "#aa9933",
-           "foreground": "white",
-           "type": "text"
-       },
-       "ENHANCEMENT:": {
-           "iconColour": "#66aa66",
-           "background": "#66aa66",
-           "foreground": "white",
-           "type": "text"
-       }
-    },
     "restructuredtext.linter.run": "onSave",
-  "restructuredtext.linter.extraArgs": [
+    "restructuredtext.linter.extraArgs": [
         "--ignore","D001"
-  ],
+    ],
     "restructuredtext.confPath": "${workspaceFolder}/docs",
     "editor.minimap.renderCharacters": false,
     "cSpell.diagnosticLevel": "Hint",
@@ -193,5 +159,50 @@
     "explorer.confirmDragAndDrop": false,
     "window.menuBarVisibility": "toggle",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "todo-tree.general.tags":[
+        "TODO",
+        "REFACTOR",
+        "ENHANCEMENT"
+    ],
+    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)*\\s*($TAGS)|^\\s*- \\[ \\])",
+    "todo-tree.highlights.customHighlight": {
+        "TODO": {
+            // "background": "#aa6666",
+            "iconColour": "#ff0000",
+            "rulerColour": "#ff0000",
+            "background": "#ff0000",
+            "foreground": "white",
+            "opacity": 0.4,
+            "type": "text"
+        },
+        "REFACTOR": {
+            // "background": "#aa9933",
+            "iconColour": "#ffff00",
+            "rulerColour": "#ffff00",
+            "background": "#ffff00",
+            "foreground": "white",
+            "opacity": 0.4,
+            "type": "text"
+        },
+        "ENHANCEMENT": {
+            // "background": "#66aa66",
+            "iconColour": "#00ff00",
+            "rulerColour": "#00ff00",
+            "background": "#00ff00",
+            "foreground": "white",
+            "opacity": 0.4,
+            "type": "text"
+        }
+    },
+    "todo-tree.highlights.defaultHighlight": {
+        "iconColour": "#ffffff",
+        "rulerColour": "#ffffff",
+        "background": "#ffffff",
+        "foreground": "white",
+        "opacity": 0.4,
+        "type": "text"
+    },
+    "todo-tree.tree.grouped": true,
+    "todo-tree.tree.showTagsFromOpenFilesOnly": true,
 }
