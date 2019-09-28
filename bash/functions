@@ -65,7 +65,8 @@ set_ps1_components_color(){
 
 	local end=$(sgr 0)
 	local bold=$(sgr 1)
-	local bg_default=$(sgr 48)
+	local reverse=$(sgr 7)
+	local bg_default=$(sgr 49)
 	local bg_01=$(sgr_bg24 128 128 128)
 	local fg_01=$(sgr_fg24 128 128 128)
 	local bg_02=$(sgr_bg24 96 96 96)
