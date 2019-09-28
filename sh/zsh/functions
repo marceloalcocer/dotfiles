@@ -16,6 +16,25 @@ set_ps1_components(){
 	ps1_anchor_host=$'\xEE\x82\xB0'
 	ps1_anchor_wd=$'\xEE\x82\xB0'
 	ps1_anchor_prompt=$'\xEE\x82\xB0'
+	ps1_viins=$'\xEE\x82\xB0'
+	ps1_vicmd=" "
+}
+
+# Style PS1 components
+style_ps1_vimode(){
+
+	local end=$(sgr 0)
+	local reverse=$(sgr 7)
+	local bg_default=$(sgr 49)
+
+	local fg_vicmd=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_vicmd=$(sgr_bg24 ${ps1_rgb_user_block[*]})
+	local fg_viins=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_viins=${bg_default}
+
+	ps1_vicmd="${bg_vicmd}${ps1_vicmd}${end}"
+	ps1_viins="${reverse}${bg_viins}${fg_viins}${ps1_viins}${end}"
+
 }
 
 # Set PS1
@@ -23,32 +42,32 @@ set_ps1(){
 	set_ps1_components
 	if is_color_term; then
 		style_ps1_components
+		style_ps1_vimode
 	fi
 	PS1=$(ps1)
 }
 
-# Display vi mode
-zle-line-init zle-keymap-select(){
-
-	local end=$(sgr 0)
-	local reverse=$(sgr 7)
-	local bg_mode=$(sgr 49)
-	local fg_mode=$(sgr_fg24 ${ps1_rgb_user_block[*]})
-	local bg_user=$(sgr_bg24 ${ps1_rgb_user_block[*]})
-	local ins_mode_char=$'\xEE\x82\xB0'
-	local cmd_mode_char=" "
-	local cmd_mode_string="${bg_user}${cmd_mode_char}${end}"
-	local ins_mode_string="${reverse}${bg_mode}${fg_mode}${ins_mode_char}${end}"
-
+# Update vi mode
+set_vimode(){
 	case "$KEYMAP" in
 		main|viins)
-			set_ps1
-			PS1="${ins_mode_string}${PS1}"
+			ps1_vimode=${ps1_viins}
 		;;
 		vicmd)
-			set_ps1
-			PS1="${cmd_mode_string}${PS1}"
+			ps1_vimode=${ps1_vicmd}
 		;;
 	esac
+	PS1="${ps1_vimode}$(ps1)"
+}
+
+# Update PS1 on keymap change
+zle-keymap-select(){
+	set_vimode
+	zle reset-prompt
+}
+
+# Update PS1 line init
+zle-line-init(){
+	set_vimode
 	zle reset-prompt
 }
