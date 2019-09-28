@@ -1,4 +1,21 @@
-# TODO: Rename to functions. Source from both bashrc and zshrc
+# Color support
+is_color_term(){
+
+	# Explicit color support
+	case "$TERM" in
+		xterm-color|*-256color)
+			return 0
+		;;
+	esac
+
+	# Implied color support
+	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+		return 0
+	fi
+
+	# No color support
+	return 1
+}
 
 # ANSI select graphic rendition control sequences
 sgr(){               # SGR (https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters)
@@ -17,46 +34,17 @@ sgr_bg24(){         # 24-bit background color (https://en.wikipedia.org/wiki/ANS
 	echo $(sgr "48;2;${1};${2};${3}")
 }
 
-# Identify color support
-is_color_term(){
-
-	# Explicit color support
-	case "$TERM" in
-		xterm-color|*-256color)
-			return 0
-		;;
-	esac
-
-	# Implied color support
-	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-		return 0
-	fi
-
-	# No culor support
-	return 1
-}
-
-
-# Set PS1 components
+# Set PS1 components (placeholder)
 set_ps1_components(){
-	case "$SHELL" in
-		*/bash)
-			ps1_user=" \u "
-			ps1_host=" \h "
-			ps1_wd=" \w "
-		;;
-		*/zsh)
-			ps1_user="%n"
-			ps1_host="%m"
-			ps1_wd="%~"
-		;;
-	esac
-	ps1_anchor_host=$'\xEE\x82\xB0'
-	ps1_anchor_wd=$'\xEE\x82\xB0'
-	ps1_anchor_prompt=$'\xEE\x82\xB0'
+	ps1_user=
+	ps1_host=
+	ps1_wd=
+	ps1_anchor_host=
+	ps1_anchor_wd=
+	ps1_anchor_prompt=
 }
 
-# Set colored PS1 components
+# Style PS1 components
 style_ps1_components(){
 
 	local rgb_user_block=(128 128 128)
@@ -96,25 +84,6 @@ style_ps1_components(){
 ps1(){
 	echo "${ps1_user}${ps1_anchor_host}${ps1_host}${ps1_anchor_wd}${ps1_wd}${ps1_anchor_prompt} "
 }
-
-# Set PS1
-set_ps1(){
-
-	# Set PS1
-	set_ps1_components
-	if is_color_term; then
-		style_ps1_components
-	fi
-	PS1=$(ps1)
-
-	# Width caluclations ignore non-printing characters (bash only) 
-	case "$SHELL" in
-		*/bash)
-			PS1="\[${PS1}\]"
-		;;
-	esac
-}
-
 
 # Set xterm title
 set_xterm_title(){
