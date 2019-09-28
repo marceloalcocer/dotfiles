@@ -41,9 +41,9 @@ is_color_term(){
 set_ps1_components(){
 	case "$SHELL" in
 		*/bash)
-			ps1_user="\u"
-			ps1_host="\h"
-			ps1_wd="\w"
+			ps1_user=" \u "
+			ps1_host=" \h "
+			ps1_wd=" \w "
 		;;
 		*/zsh)
 			ps1_user="%n"
@@ -51,25 +51,36 @@ set_ps1_components(){
 			ps1_wd="%~"
 		;;
 	esac
-	ps1_anchor_host="@"
-	ps1_anchor_wd=":"
-	ps1_anchor_prompt=$(printf "\u25B9")    # White right-pointing small triangle
-	#ps1_anchor_prompt="$(ansi_sgr_fg24 88 88 88)$(printf '\uE0B0')${end}"			# Rightwards black arrowhead
+	ps1_anchor_host=$'\xee\x82\xb1'
+	ps1_anchor_wd=$'\xee\x82\xb1'
+	ps1_anchor_prompt=$'\xee\x82\xb0'
 }
 
 # Set colored PS1 components
 set_ps1_components_color(){
+
 	set_ps1_components
+
 	local sgr_end=$(sgr 0)
 	local sgr_bold=$(sgr 1)
-	ps1_user="${sgr_bold}$(sgr_fg24 255 0 0)${ps1_user}${sgr_end}"
-	ps1_host="${sgr_bold}$(sgr_fg24 255 0 0)${ps1_host}${sgr_end}"
-	ps1_wd="${sgr_bold}$(sgr_bg24 88 88 88)$(sgr_fg24 168 168 168)${ps1_wd}${sgr_end}"
+	local sgr_reverse=$(sgr 7)
+	local sgr_default_bg=$(sgr 48)
+
+	local grey00="96 96 96"
+	local grey01="192 192 192"
+
+	ps1_user="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_user}${sgr_end}"
+	ps1_anchor_host="${sgr_bold}${sgr_reverse}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_host}${sgr_end}"
+	ps1_host="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_host}${sgr_end}"
+	ps1_anchor_wd="${sgr_bold}${sgr_reverse}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_wd}${sgr_end}"
+	ps1_wd="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_wd}${sgr_end}"
+	ps1_anchor_prompt="${sgr_bold}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_prompt}${sgr_end}"
+
 }
 
 # Build PS1
 ps1(){
-	echo "${ps1_user}${ps1_anchor_host}${ps1_host}${ps1_anchor_wd}${ps1_wd}${ps1_anchor_prompt}"
+	echo "${ps1_user}${ps1_anchor_host}${ps1_host}${ps1_anchor_wd}${ps1_wd}${ps1_anchor_prompt} "
 }
 
 # Set PS1
