@@ -1,0 +1,54 @@
+# Common
+if [ -f ~/.functions ]; then
+    . ~/.functions
+fi
+
+# ANSI select graphic rendition control sequences
+sgr(){
+	echo $'%{\x1B['${1}'m%}'    # Override to add non-printing escape
+}
+
+# Set PS1 components
+set_ps1_components(){
+	ps1_user=" %n "
+	ps1_host=" %m "
+	ps1_wd=" %~ "
+	ps1_anchor_host=$'\xEE\x82\xB0'
+	ps1_anchor_wd=$'\xEE\x82\xB0'
+	ps1_anchor_prompt=$'\xEE\x82\xB0'
+}
+
+# Set PS1
+set_ps1(){
+	set_ps1_components
+	if is_color_term; then
+		style_ps1_components
+	fi
+	PS1=$(ps1)
+}
+
+# Display vi mode
+zle-line-init zle-keymap-select(){
+
+	local end=$(sgr 0)
+	local reverse=$(sgr 7)
+	local bg_mode=$(sgr 49)
+	local fg_mode=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_user=$(sgr_bg24 ${ps1_rgb_user_block[*]})
+	local ins_mode_char=$'\xEE\x82\xB0'
+	local cmd_mode_char=" "
+	local cmd_mode_string="${bg_user}${cmd_mode_char}${end}"
+	local ins_mode_string="${reverse}${bg_mode}${fg_mode}${ins_mode_char}${end}"
+
+	case "$KEYMAP" in
+		main|viins)
+			set_ps1
+			PS1="${ins_mode_string}${PS1}"
+		;;
+		vicmd)
+			set_ps1
+			PS1="${cmd_mode_string}${PS1}"
+		;;
+	esac
+	zle reset-prompt
+}

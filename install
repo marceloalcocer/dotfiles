@@ -36,6 +36,17 @@ declare -A dotdests=(
 )
 dotln
 
+# zsh dotfiles
+dotdir="${dotbasedir}/sh/zsh"
+declare -A dotdests=(
+	["aliases"]="${HOME}/.zsh_aliases"
+	["env"]="${HOME}/.zsh_env"
+	["functions"]="${HOME}/.zsh_functions"
+	["logout"]="${HOME}/.zlogout"
+	["rc"]="${HOME}/.zshrc"
+)
+dotln
+
 # Vim dotfiles
 dotdir="${dotbasedir}/vim"
 declare -A dotdests=(
