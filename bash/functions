@@ -51,9 +51,11 @@ set_ps1_components(){
 			ps1_wd="%~"
 		;;
 	esac
-	ps1_anchor_host=$'\xee\x82\xb1'
-	ps1_anchor_wd=$'\xee\x82\xb1'
-	ps1_anchor_prompt=$'\xee\x82\xb0'
+	#ps1_anchor_host=$'\xEE\x82\xB1'
+	#ps1_anchor_wd=$'\xEE\x82\xB1'
+	ps1_anchor_host=$'\xEE\x82\xB0'
+	ps1_anchor_wd=$'\xEE\x82\xB0'
+	ps1_anchor_prompt=$'\xEE\x82\xB0'
 }
 
 # Set colored PS1 components
@@ -61,20 +63,24 @@ set_ps1_components_color(){
 
 	set_ps1_components
 
-	local sgr_end=$(sgr 0)
-	local sgr_bold=$(sgr 1)
-	local sgr_reverse=$(sgr 7)
-	local sgr_default_bg=$(sgr 48)
+	local end=$(sgr 0)
+	local bold=$(sgr 1)
+	local bg_default=$(sgr 48)
+	local bg_01=$(sgr_bg24 128 128 128)
+	local fg_01=$(sgr_fg24 128 128 128)
+	local bg_02=$(sgr_bg24 96 96 96)
+	local fg_02=$(sgr_fg24 96 96 96)
+	local bg_03=$(sgr_bg24 64 64 64)
+	local fg_03=$(sgr_fg24 64 64 64)
+	local bg_04=$(sgr_bg24 224 224 224)
+	local fg_04=$(sgr_fg24 224 224 224)
 
-	local grey00="96 96 96"
-	local grey01="192 192 192"
-
-	ps1_user="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_user}${sgr_end}"
-	ps1_anchor_host="${sgr_bold}${sgr_reverse}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_host}${sgr_end}"
-	ps1_host="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_host}${sgr_end}"
-	ps1_anchor_wd="${sgr_bold}${sgr_reverse}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_wd}${sgr_end}"
-	ps1_wd="${sgr_bold}$(sgr_bg24 ${grey00})$(sgr_fg24 ${grey01})${ps1_wd}${sgr_end}"
-	ps1_anchor_prompt="${sgr_bold}${sgr_default_bg}$(sgr_fg24 ${grey00})${ps1_anchor_prompt}${sgr_end}"
+	ps1_user="${fg_04}${bg_01}${ps1_user}${end}"
+	ps1_anchor_host="${fg_01}${bg_02}${ps1_anchor_host}${end}"
+	ps1_host="${fg_04}${bg_02}${ps1_host}${end}"
+	ps1_anchor_wd="${fg_02}${bg_03}${ps1_anchor_wd}${end}"
+	ps1_wd="${fg_04}${bg_03}${ps1_wd}${end}"
+	ps1_anchor_prompt="${fg_03}${bg_default}${ps1_anchor_prompt}${end}"
 
 }
 
