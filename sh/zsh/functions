@@ -1,0 +1,132 @@
+# Common
+if [ -f ~/.functions ]; then
+    . ~/.functions
+fi
+
+# ANSI select graphic rendition control sequences
+sgr(){
+	echo $'%{\x1B['${1}'m%}'    # Override to add non-printing escape
+}
+
+# Set PS1 components
+set_ps1_components(){
+	ps1_viins=$'\xEE\x82\xB0'
+	ps1_vicmd=" "
+	ps1_user=" %n "
+	ps1_anchor_host=$'\xEE\x82\xB0'
+	ps1_host=" %m "
+	ps1_anchor_wd=$'\xEE\x82\xB0'
+	ps1_wd=" %~ "
+	ps1_anchor_prompt=$'\xEE\x82\xB0'
+	ps1_anchor_git=$'\xEE\x82\xB2'
+	ps1_git_dirty=$'\xEE\x82\xB2'
+	ps1_git_clean=" "
+}
+
+# Style PS1 components
+style_ps1_vimode(){
+
+	local end=$(sgr 0)
+	local reverse=$(sgr 7)
+	local bg_default=$(sgr 49)
+
+	local fg_vicmd=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_vicmd=$(sgr_bg24 ${ps1_rgb_user_block[*]})
+	local fg_viins=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_viins=${bg_default}
+
+	ps1_vicmd="${bg_vicmd}${ps1_vicmd}${end}"
+	ps1_viins="${reverse}${bg_viins}${fg_viins}${ps1_viins}${end}"
+
+}
+
+# Style git components
+style_ps1_git(){
+
+	ps1_rgb_git_block=(240 51 51)
+
+	local end=$(sgr 0)
+	local reverse=$(sgr 7)
+	local bg_default=$(sgr 49)
+	local fg_anchor_git=$(sgr_fg24 ${ps1_rgb_git_block[*]})
+	local bg_anchor_git=${bg_default}
+	local fg_git_branch=$(sgr_fg24 ${ps1_rgb_git_block[*]})
+	local bg_git_branch=${bg_default}
+	local fg_git_dirty=$(sgr_fg24 ${ps1_rgb_git_block[*]})
+	local bg_git_dirty=${bg_default}
+	local bg_git_clean=$(sgr_bg24 ${ps1_rgb_git_block[*]})
+
+	ps1_anchor_git="${fg_anchor_git}${bg_anchor_git}${ps1_anchor_git}${end}"
+	ps1_git_branch="${reverse}${fg_git_branch}${bg_git_branch}${ps1_git_branch}${end}"
+	ps1_git_dirty="${reverse}${fg_git_dirty}${bg_git_dirty}${ps1_git_dirty}${end}"
+	ps1_git_clean="${bg_git_clean}${ps1_git_clean}${end}"
+
+}
+
+# Set PS1
+set_ps1(){
+	set_ps1_components
+	if is_color_term; then
+		style_ps1_components
+		style_ps1_vimode
+	fi
+	PS1=$(ps1)
+}
+
+# Update vi mode
+set_vimode(){
+	case "$KEYMAP" in
+		main|viins)
+			local ps1_vimode=${ps1_viins}
+		;;
+		vicmd)
+			local ps1_vimode=${ps1_vicmd}
+		;;
+	esac
+	PS1="${ps1_vimode}$(ps1)"
+}
+
+# Git branch
+set_git_branch(){
+	if [ -d .git ]; then
+		
+		# Branch
+		local branch_glyph=$'\xEE\x82\xA0'
+		ps1_git_branch=" ${branch_glyph} ${$(git branch --list --contains HEAD)/* /} "
+
+		# Status
+		local foo=
+		case "$(git status --porcelain=2 | awk '{print $1}')" in
+			1*)
+				local ps1_git_status=${ps1_git_dirty}
+			;;
+			*)	
+				local ps1_git_status=${ps1_git_clean}
+			;;
+		esac
+
+		# Style
+		if is_color_term; then
+			style_ps1_git
+		fi
+
+		# Set
+		RPS1="${ps1_anchor_git}${ps1_git_branch}${ps1_git_status}"
+
+	else
+		RPS1=
+	fi
+}
+
+# Update PS1 on keymap change
+zle-keymap-select(){
+	set_vimode
+	zle reset-prompt
+}
+
+# Update PS1 line init
+zle-line-init(){
+	set_git_branch
+	set_vimode
+	zle reset-prompt
+}

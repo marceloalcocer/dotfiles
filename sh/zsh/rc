@@ -1,0 +1,38 @@
+# Common
+if [ -f ~/.rc ]; then
+    . ~/.rc
+fi
+
+# Aliases
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+
+# Functions
+if [ -f ~/.zsh_functions ]; then
+    . ~/.zsh_functions
+fi
+
+# Environment variables
+if [ -f ~/.zsh_env ]; then
+    . ~/.zsh_env
+fi
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=1000
+SAVEHIST=1000
+
+# vi keymap
+bindkey -v
+export KEYTIMEOUT=5
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# Completion
+zstyle :compinstall filename '/home/malcocer/.zshrc'
+autoload -Uz compinit
+compinit
+
+# Prompt string
+set_ps1
