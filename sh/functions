@@ -117,3 +117,16 @@ hyln(){
 	echo -e "<html><head><meta http-equiv=\"refresh\" content=\"0; url=${1}\"/></head></html>" > "${2}"
 }
 
+# Base converters
+hex2dec(){
+	echo "ibase=16; ${1}" | bc
+}
+dec2hex(){
+	echo "obase=16; ${1}" | bc
+}
+oct2dec(){
+	echo "ibase=8; ${1}" | bc
+}
+dec2oct(){
+	echo "obase=8; ${1}" | bc
+}
