@@ -1,0 +1,153 @@
+# Color support
+is_color_term(){
+
+	# Explicit color support
+	case "$TERM" in
+		xterm-color|*-256color)
+			return 0
+		;;
+	esac
+
+	# Implied color support
+	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+		return 0
+	fi
+
+	# No color support
+	return 1
+}
+
+# ANSI select graphic rendition control sequences
+sgr(){               # SGR (https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters)
+	echo $'\x1B['${1}'m'
+}
+sgr_fg8(){           # 8-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+	echo $(sgr "38;5;${1}")
+}
+sgr_bg8(){           # 8-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+	echo $(sgr "48;5;${1}")
+}
+sgr_fg24(){          # 24-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
+	echo $(sgr "38;2;${1};${2};${3}")
+}
+sgr_bg24(){         # 24-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
+	echo $(sgr "48;2;${1};${2};${3}")
+}
+
+# Set PS1 components (placeholder)
+set_ps1_components(){
+	ps1_user=
+	ps1_host=
+	ps1_wd=
+	ps1_anchor_host=
+	ps1_anchor_wd=
+	ps1_anchor_prompt=
+}
+
+# Style PS1 components
+style_ps1_components(){
+
+	ps1_rgb_user_block=(128 128 128)
+	ps1_rgb_user_text=(192 192 192)
+	ps1_rgb_host_block=(96 96 96)
+	ps1_rgb_host_text=(192 192 192)
+	ps1_rgb_wd_block=(64 64 64)
+	ps1_rgb_wd_text=(192 192 192)
+
+	local end=$(sgr 0)
+	local bg_default=$(sgr 49)
+	local fg_user=$(sgr_fg24 ${ps1_rgb_user_text[*]})
+	local bg_user=$(sgr_bg24 ${ps1_rgb_user_block[*]})
+	local fg_anchor_host=$(sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_anchor_host=$(sgr_bg24 ${ps1_rgb_host_block[*]})
+	local fg_host=$(sgr_fg24 ${ps1_rgb_host_text[*]})
+	local bg_host=$(sgr_bg24 ${ps1_rgb_host_block[*]})
+	local fg_anchor_wd=$(sgr_fg24 ${ps1_rgb_host_block[*]})
+	local bg_anchor_wd=$(sgr_bg24 ${ps1_rgb_wd_block[*]})
+	local fg_wd=$(sgr_fg24 ${ps1_rgb_wd_text[*]})
+	local bg_wd=$(sgr_bg24 ${ps1_rgb_wd_block[*]})
+	local fg_anchor_prompt=$(sgr_fg24 ${ps1_rgb_wd_block[*]})
+	local bg_anchor_prompt=${bg_default}
+
+	ps1_user="${fg_user}${bg_user}${ps1_user}${end}"
+	ps1_anchor_host="${fg_anchor_host}${bg_anchor_host}${ps1_anchor_host}${end}"
+	ps1_host="${fg_host}${bg_host}${ps1_host}${end}"
+	ps1_anchor_wd="${fg_anchor_wd}${bg_anchor_wd}${ps1_anchor_wd}${end}"
+	ps1_wd="${fg_wd}${bg_wd}${ps1_wd}${end}"
+	ps1_anchor_prompt="${fg_anchor_prompt}${bg_anchor_prompt}${ps1_anchor_prompt}${end}"
+
+}
+
+# Build PS1
+ps1(){
+	echo "${ps1_user}${ps1_anchor_host}${ps1_host}${ps1_anchor_wd}${ps1_wd}${ps1_anchor_prompt} "
+}
+
+# Set xterm title
+set_xterm_title(){
+	case "$TERM" in
+		xterm*|rxvt*)
+			set_ps1_components
+			echo $'\x1B]0;'$(ps1)$'\x07'
+	    ;;
+	esac
+}
+
+# Listings
+lc(){
+	ll --color $1 | less -R
+}
+
+# su with xauth
+sux(){
+	local cookie=$(xauth list ${HOSTNAME}/unix:0)				# Extract xauth cookie
+	cookie=${cookie/:/:0}							# Append display
+	local xauthority="/home/$1/.Xauthority"					# Define Xauthority file path
+	sudo XAUTHORITY="$xauthority" su -c "xauth add ${cookie}" $1		# Add cookie to Xauthority file
+	sudo XAUTHORITY="$xauthority" su $1
+}
+
+# Backup copy
+bucp(){
+	cp "${1}" "${1}~"
+}
+
+# Filesystem hyperlink
+hyln(){
+	echo -e "<html><head><meta http-equiv=\"refresh\" content=\"0; url=${1}\"/></head></html>" > "${2}"
+}
+
+# Base converters
+hex2dec(){
+	echo "ibase=16; ${1}" | bc
+}
+dec2hex(){
+	echo "obase=16; ${1}" | bc
+}
+oct2dec(){
+	echo "ibase=8; ${1}" | bc
+}
+dec2oct(){
+	echo "obase=8; ${1}" | bc
+}
+
+# Toggle touchpad
+toggle_touchpad(){
+	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad send-events)" = "'enabled'" ]; then
+		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'disabled'
+	else
+		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
+	fi
+}
+
+# Open alfresco document
+alfresco(){
+	local tmp=$(date | md5sum)
+	curl -H "cookie: $(cat ~/.alfresco)" "${1}" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
+}
+
+# Remote IcePAP CMS
+sicepapcms(){
+	#ssh -f -X controlroom@$1 "icepapcms --all-networks"
+	ssh -X controlroom@$1 "icepapcms --all-networks"
+}

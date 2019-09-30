@@ -1,0 +1,15 @@
+# Return if not interactive shell
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Colors
+if [ -x /usr/bin/dircolors ]; then                                                         # ls
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'     # GCC
+
+# Terminal window title
+#set_xterm_title
+

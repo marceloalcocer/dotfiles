@@ -2,7 +2,7 @@
 
 # Description:	Dotfile installer
 # Author:	Marcelo JP Alcocer (marcelo.j.p.alcocer@gmail.com)
-# Date:		2019.01.03
+# Date:		2019.09.28
 
 # Dotfile base directory
 dotbasedir="$(dirname $(realpath $0))"
@@ -12,22 +12,38 @@ dotln(){
 	for dotfile in "${!dotdests[@]}"; do ln -sf "${dotdir}/${dotfile}" "${dotdests[${dotfile}]}"; done
 }
 
-# General dotfiles
-dotdir=${dotbasedir}
+# sh dotfiles
+dotdir="${dotbasedir}/sh"
 declare -A dotdests=(
-	["profile"]="${HOME}/.profile"
+	["aliases"]="${HOME}/.aliases"
+	["env"]="${HOME}/.env"
+	["functions"]="${HOME}/.functions"
 	["inputrc"]="${HOME}/.inputrc"
+	["logout"]="${HOME}/.logout"
+	["profile"]="${HOME}/.profile"
+	["rc"]="${HOME}/.rc"
 )
 dotln
 
-# Bash dotfiles
-dotdir="${dotbasedir}/bash"
+# bash dotfiles
+dotdir="${dotbasedir}/sh/bash"
 declare -A dotdests=(
 	["aliases"]="${HOME}/.bash_aliases"
 	["env"]="${HOME}/.bash_env"
 	["functions"]="${HOME}/.bash_functions"
 	["logout"]="${HOME}/.bash_logout"
 	["rc"]="${HOME}/.bashrc"
+)
+dotln
+
+# zsh dotfiles
+dotdir="${dotbasedir}/sh/zsh"
+declare -A dotdests=(
+	["aliases"]="${HOME}/.zsh_aliases"
+	["env"]="${HOME}/.zsh_env"
+	["functions"]="${HOME}/.zsh_functions"
+	["logout"]="${HOME}/.zlogout"
+	["rc"]="${HOME}/.zshrc"
 )
 dotln
 

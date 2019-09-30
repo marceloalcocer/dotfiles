@@ -1,0 +1,4 @@
+# Common
+if [ -f ~/.env ]; then
+    . ~/.env
+fi
