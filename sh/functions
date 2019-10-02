@@ -47,12 +47,12 @@ set_ps1_components(){
 # Style PS1 components
 style_ps1_components(){
 
-	ps1_rgb_user_block=(128 128 128)
-	ps1_rgb_user_text=(192 192 192)
+	ps1_rgb_user_block=(50 50 135)
+	ps1_rgb_user_text=(248 248 242)
 	ps1_rgb_host_block=(96 96 96)
-	ps1_rgb_host_text=(192 192 192)
+	ps1_rgb_host_text=(248 248 242)
 	ps1_rgb_wd_block=(64 64 64)
-	ps1_rgb_wd_text=(192 192 192)
+	ps1_rgb_wd_text=(248 248 242)
 
 	local end=$(sgr 0)
 	local bg_default=$(sgr 49)
