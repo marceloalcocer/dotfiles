@@ -22,6 +22,10 @@ fi
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
+bindkey -M vicmd "?" vi-history-search-backward
+bindkey -M vicmd "/" vi-history-search-forward
+bindkey -M vicmd "#" history-beginning-search-backward
+bindkey -M vicmd "*" history-beginning-search-backward
 
 # vi keymap
 bindkey -v
