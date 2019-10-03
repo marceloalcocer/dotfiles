@@ -1,6 +1,6 @@
 {
     "breadcrumbs.enabled": true,
-    "editor.fontSize": 12,
+    "editor.fontSize": 11,
     "editor.insertSpaces": false,
     "editor.showFoldingControls": "always",
     "editor.renderWhitespace": "boundary",
@@ -205,4 +205,6 @@
     },
     "todo-tree.tree.grouped": true,
     "todo-tree.tree.showTagsFromOpenFilesOnly": true,
+    "editor.fontFamily": "'Hasklig', monospace",
+    "editor.fontLigatures": true,
 }
