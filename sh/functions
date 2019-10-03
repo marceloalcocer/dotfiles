@@ -49,25 +49,8 @@ style_ps1_components(){
 
 	ps1_rgb_user_block=(215 135 0)
 	ps1_rgb_user_text=(248 248 242)
-	case "$HOST" in
-		w-*)
-			ps1_rgb_host_block=(192 192 192)
-			ps1_rgb_host_text=(39 40 34)
-		;;
-		b-*)
-			ps1_rgb_host_block=(0 0 135)
-			ps1_rgb_host_text=(248 248 242)
-		;;
-		g-*)
-			ps1_rgb_host_block=(0 95 0)
-			ps1_rgb_host_text=(248 248 242)
-		;;
-		*)
-			ps1_rgb_host_block=(96 96 96)
-			ps1_rgb_host_text=(248 248 242)
-		;;
-	esac
-
+	ps1_rgb_host_block=(192 192 192)
+	ps1_rgb_host_text=(39 40 34)
 	ps1_rgb_wd_block=(64 64 64)
 	ps1_rgb_wd_text=(248 248 242)
 
