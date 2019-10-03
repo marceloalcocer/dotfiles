@@ -92,7 +92,7 @@ set_git_branch(){
 		
 		# Branch
 		local branch_glyph=$'\xEE\x82\xA0'
-		ps1_git_branch=" ${branch_glyph} ${$(git branch --list --contains HEAD)/* /} "
+		ps1_git_branch=" ${branch_glyph} ${$(git branch | grep '\*')/* /} "
 
 		# Status
 		local foo=
