@@ -55,11 +55,11 @@ style_ps1_components(){
 			ps1_rgb_host_text=(39 40 34)
 		;;
 		b-*)
-			ps1_rgb_host_block=(0 0 135)
+			ps1_rgb_host_block=(50 50 135)
 			ps1_rgb_host_text=(248 248 242)
 		;;
 		g-*)
-			ps1_rgb_host_block=(0 95 0)
+			ps1_rgb_host_block=(35 128 35)
 			ps1_rgb_host_text=(248 248 242)
 		;;
 		*)
