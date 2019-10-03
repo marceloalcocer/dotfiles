@@ -146,6 +146,11 @@ alfresco(){
 	curl -H "cookie: $(cat ~/.alfresco)" "${1}" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
 }
 
+# Open onedrive document
+onedrive(){
+	chromium-browser $(cat $1)
+}
+
 # Remote IcePAP CMS
 sicepapcms(){
 	#ssh -f -X controlroom@$1 "icepapcms --all-networks"
