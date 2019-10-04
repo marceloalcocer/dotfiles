@@ -1,11 +1,10 @@
-#!/usr/bin/python
 import os
 import atexit
 import readline
 import rlcompleter
 
 # Tab completion
-readline.parse_and_bind('tab: complete')
+readline.parse_and_bind("tab: complete")
 
 # History file handling
 historyPath = os.path.expanduser("~/.py_history")
