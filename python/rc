@@ -1,0 +1,21 @@
+#!/usr/bin/python
+import os
+import atexit
+import readline
+import rlcompleter
+
+# Tab completion
+readline.parse_and_bind('tab: complete')
+
+# History file handling
+historyPath = os.path.expanduser("~/.py_history")
+def save_history(historyPath=historyPath):
+	"""Write history to file"""
+	import readline
+	readline.write_history_file(historyPath)
+if os.path.exists(historyPath):
+	readline.read_history_file(historyPath)    # Read history from file on startup
+atexit.register(save_history)                  # Write history to file on exit
+
+# Namespace cleanup
+del os, atexit, readline, rlcompleter, save_history, historyPath
