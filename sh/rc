@@ -17,3 +17,5 @@ export HOSTNAME=$HOST
 # Terminal window title
 #set_xterm_title
 
+# Python rc
+export PYTHONSTARTUP="${HOME}/.pyrc"
