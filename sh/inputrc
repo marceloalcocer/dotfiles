@@ -1,7 +1,7 @@
 set editing-mode vi
 set show-mode-in-prompt on
 $if Bash
-set vi-cmd-mode-string "\x1B[48;2;128;128;128m \x1B[0m"
-set vi-ins-mode-string "\x1B[7m\x1B[49m\x1B[38;2;128;128;128m\xEE\x82\xB0\x1B[0m"
+set vi-cmd-mode-string "\x1B[48;2;50;50;135m \x1B[0m"
+set vi-ins-mode-string "\x1B[7m\x1B[49m\x1B[38;2;50;50;135m\xEE\x82\xB0\x1B[0m"
 $endif
 set keyseq-timeout 5
