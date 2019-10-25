@@ -17,6 +17,7 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=1
+set number
 set relativenumber
 "set undofile
 set ignorecase
