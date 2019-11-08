@@ -168,7 +168,6 @@
     "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)*\\s*($TAGS)|^\\s*- \\[ \\])",
     "todo-tree.highlights.customHighlight": {
         "TODO": {
-            // "background": "#aa6666",
             "iconColour": "#ff0000",
             "rulerColour": "#ff0000",
             "background": "#ff0000",
@@ -177,7 +176,6 @@
             "type": "text"
         },
         "REFACTOR": {
-            // "background": "#aa9933",
             "iconColour": "#ffff00",
             "rulerColour": "#ffff00",
             "background": "#ffff00",
@@ -186,7 +184,6 @@
             "type": "text"
         },
         "ENHANCEMENT": {
-            // "background": "#66aa66",
             "iconColour": "#00ff00",
             "rulerColour": "#00ff00",
             "background": "#00ff00",
