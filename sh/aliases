@@ -31,3 +31,7 @@ alias please='sudo'
 
 # wttr.in
 alias wttr='curl https://v2.wttr.in/'
+
+# PIL
+alias pil='ssh g-v-cc-0 "cd ~/src/pil/ && python pil.py ${@}"'
+
