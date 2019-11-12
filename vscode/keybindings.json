@@ -25,5 +25,9 @@
 	{
 		"key": "ctrl+meta+`",
 		"command": "workbench.action.toggleMaximizedPanel"
+	},
+	{
+		"key": "shift+alt+-",
+		"command": "workbench.action.togglePanelPosition"
 	}
 ]
