@@ -35,6 +35,8 @@ zle -N zle-keymap-select
 
 # Completion
 zstyle :compinstall filename '/home/malcocer/.zshrc'
+zstyle ':completion:*' menu select
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
 
