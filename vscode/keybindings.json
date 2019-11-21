@@ -21,5 +21,13 @@
 		"key": "ctrl+pageup",
 		"command": "workbench.action.terminal.focusPrevious",
 		"when": "terminalFocus"
+	},
+	{
+		"key": "ctrl+meta+`",
+		"command": "workbench.action.toggleMaximizedPanel"
+	},
+	{
+		"key": "shift+alt+-",
+		"command": "workbench.action.togglePanelPosition"
 	}
 ]

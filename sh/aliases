@@ -31,3 +31,6 @@ alias please='sudo'
 
 # wttr.in
 alias wttr='curl https://v2.wttr.in/'
+
+# Show directory stack
+alias stackd='dirs -v'
