@@ -31,3 +31,6 @@ alias wttr='curl https://v2.wttr.in/'
 
 # Show directory stack
 alias stackd='dirs -v'
+
+# Readline wrapping
+alias telnet='rlwrap telnet'
