@@ -34,3 +34,6 @@ alias stackd='dirs -v'
 
 # Readline wrapping
 alias telnet='rlwrap telnet'
+
+# Color ip command
+alias ip='ip -c'
