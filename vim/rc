@@ -78,6 +78,10 @@ cnoreabbrev vterm Term
 
 " Filetype Handling "
 filetype indent on
+filetype plugin on
 autocmd FileType gitcommit setlocal spell textwidth=72
 autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
 autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
+autocmd FileType markdown let g:markdown_folding=1
+autocmd FileType markdown let g:markdown_fenced_languages=['python', 'html', 'bash=sh']
+
