@@ -48,4 +48,4 @@ alias ip='ip -c'
 #
 # based on https://github.com/repro/dig-color
 #
-alias dig='dig-color'
+alias dig='dig-color +domain=maxiv.lu.se'
