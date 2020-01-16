@@ -160,11 +160,24 @@ toggle_touchpad(){
 # Open alfresco document
 alfresco(){
 	local tmp=$(date | md5sum)
-	curl -H "cookie: $(cat ~/.alfresco)" "${1}" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
+	curl -H "cookie: $(cat ~/.alfresco)" "$(cat ${1})" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
 }
 
 # Remote IcePAP CMS
 sicepapcms(){
 	#ssh -f -X controlroom@$1 "icepapcms --all-networks"
 	ssh -X controlroom@$1 "icepapcms --all-networks"
+}
+
+# Colorize dig output
+#
+# based on https://github.com/repro/dig-color
+#
+dig-color(){
+	\dig $* | awk '					# N.b. backslash to avoid aliasing
+		!/^;/    { print "\033[33m"$0 }
+		/^;[^;]/ { print "\033[39m"$0 }
+		/^;;/    { print "\033[39m"$0 }
+		END      { print "\033[0m" }
+	';
 }

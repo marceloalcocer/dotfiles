@@ -32,5 +32,20 @@ alias please='sudo'
 # wttr.in
 alias wttr='curl https://v2.wttr.in/'
 
+# PIL
+alias pil='ssh g-v-cc-0 "cd ~/src/pil/ && python pil.py ${@}"'
+
 # Show directory stack
 alias stackd='dirs -v'
+
+# Readline wrapping
+alias telnet='rlwrap telnet'
+
+# Color ip command
+alias ip='ip -c'
+
+# Color dig command
+#
+# based on https://github.com/repro/dig-color
+#
+alias dig='dig-color +domain=maxiv.lu.se'
