@@ -125,6 +125,46 @@
                     "args": []
                 }
             ]
+        },
+        {
+            "before": ["<C-w>","H"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "workbench.action.moveEditorToLeftGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<C-w>","J"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "workbench.action.moveEditorToBelowGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<C-w>","K"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "workbench.action.moveEditorToAboveGroup",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": ["<C-w>","L"],
+            "after": [],
+            "commands":[
+                {
+                    "command": "workbench.action.moveEditorToRightGroup",
+                    "args": []
+                }
+            ]
         }
     ],
     "cSpell.language": "en-GB",
