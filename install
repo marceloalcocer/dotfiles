@@ -80,3 +80,10 @@ declare -A dotdests=(
 	["snippets"]="${HOME}/.config/Code - OSS/User/"
 )
 dotln
+
+# Misc dotfiles
+dotdir="${dotbasedir}/"
+declare -A dotdests=(
+	["toprc"]="${HOME}/.toprc"
+)
+dotln
