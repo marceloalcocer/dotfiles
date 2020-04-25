@@ -18,7 +18,6 @@ set_ps1_components(){
 	ps1_anchor_wd=$'\xEE\x82\xB0'
 	ps1_wd=" %~ "
 	ps1_anchor_prompt=$'\xEE\x82\xB0'
-	ps1_anchor_git=$'\xEE\x82\xB2'
 	ps1_git_dirty=$'\xEE\x82\xB2'
 	ps1_git_clean=" "
 }
@@ -43,24 +42,47 @@ style_ps1_vimode(){
 # Style git components
 style_ps1_git(){
 
-	ps1_rgb_git_block=(240 51 51)
+	ps1_rgb_git_block=(240 51 51)                # Git orange
 
 	local end=$(sgr 0)
 	local reverse=$(sgr 7)
 	local bg_default=$(sgr 49)
-	local fg_anchor_git=$(sgr_fg24 ${ps1_rgb_git_block[*]})
-	local bg_anchor_git=${bg_default}
+	local fg_git_anchor=$(sgr_fg24 ${ps1_rgb_git_block[*]})
+	if [[ "${ps1_pyvenv_venv}" == "" ]]; then
+		local bg_git_anchor=${bg_default}
+	else
+		local bg_git_anchor=$(sgr_bg24 ${ps1_rgb_pyvenv_block[*]})
+	fi
 	local fg_git_branch=$(sgr_fg24 ${ps1_rgb_git_block[*]})
 	local bg_git_branch=${bg_default}
 	local fg_git_dirty=$(sgr_fg24 ${ps1_rgb_git_block[*]})
 	local bg_git_dirty=${bg_default}
 	local bg_git_clean=$(sgr_bg24 ${ps1_rgb_git_block[*]})
 
-	ps1_anchor_git="${fg_anchor_git}${bg_anchor_git}${ps1_anchor_git}${end}"
+	ps1_git_anchor="${fg_git_anchor}${bg_git_anchor}${ps1_git_anchor}${end}"
 	ps1_git_branch="${reverse}${fg_git_branch}${bg_git_branch}${ps1_git_branch}${end}"
 	ps1_git_dirty="${reverse}${fg_git_dirty}${bg_git_dirty}${ps1_git_dirty}${end}"
 	ps1_git_clean="${bg_git_clean}${ps1_git_clean}${end}"
 
+}
+
+# Style python virtual environment components
+style_ps1_pyvenv(){
+
+	#ps1_rgb_pyvenv_block=(43 91 132)			# Python blue
+	ps1_rgb_pyvenv_block=(255 211 67)			# Python yellow
+
+	local end=$(sgr 0)
+	local reverse=$(sgr 7)
+	local bg_default=$(sgr 49)
+	local fg_pyvenv_anchor=$(sgr_fg24 ${ps1_rgb_pyvenv_block[*]})
+	local bg_pyvenv_anchor=${bg_default}
+	local fg_pyvenv_venv=$(sgr_fg24 ${ps1_rgb_pyvenv_block[*]})
+	local bg_pyvenv_venv=${bg_default}
+
+	ps1_pyvenv_anchor="${fg_pyvenv_anchor}${bg_pyvenv_anchor}${ps1_pyvenv_anchor}${end}"
+	ps1_pyvenv_venv="${reverse}${fg_pyvenv_venv}${bg_pyvenv_venv}${ps1_pyvenv_venv}${end}"
+	
 }
 
 # Set PS1
@@ -71,6 +93,19 @@ set_ps1(){
 		style_ps1_vimode
 	fi
 	PS1=$(ps1)
+}
+
+# Set RPS1
+set_rps1(){
+	set_pyvenv
+	set_git
+	if is_color_term; then
+		style_ps1_git
+		style_ps1_pyvenv
+	fi
+	local ps1_pyvenv="${ps1_pyvenv_anchor}${ps1_pyvenv_venv}"
+	local ps1_git="${ps1_git_anchor}${ps1_git_branch}${ps1_git_status}"
+	RPS1="${ps1_pyvenv}${ps1_git}"
 }
 
 # Update vi mode
@@ -87,34 +122,43 @@ set_vimode(){
 }
 
 # Git branch
-set_git_branch(){
+set_git(){
 	if [ -d .git ]; then
 		
 		# Branch
+		ps1_git_anchor=$'\xEE\x82\xB2'
 		local branch_glyph=$'\xEE\x82\xA0'
 		ps1_git_branch=" ${branch_glyph} ${$(git branch | grep '\*')/* /} "
 
 		# Status
-		local foo=
 		case "$(git status --porcelain=2 | awk '{print $1}')" in
 			1*)
-				local ps1_git_status=${ps1_git_dirty}
+				ps1_git_status=${ps1_git_dirty}
 			;;
 			*)	
-				local ps1_git_status=${ps1_git_clean}
+				ps1_git_status=${ps1_git_clean}
 			;;
 		esac
 
-		# Style
-		if is_color_term; then
-			style_ps1_git
-		fi
+	else
+		ps1_git_anchor=
+		ps1_git_branch=
+		ps1_git_status=
+	fi
+}
 
-		# Set
-		RPS1="${ps1_anchor_git}${ps1_git_branch}${ps1_git_status}"
+# Set python virtual ennvironment components
+set_pyvenv(){
+	if [[ "${VIRTUAL_ENV}" != "" ]]; then
+		
+		# Virtual environment
+		ps1_pyvenv_anchor=$'\xEE\x82\xB2'
+		ps1_pyvenv_venv=" ${VIRTUAL_ENV##*/} "                 # Strip dirs (https://gist.github.com/caruccio/4340471)
+		#ps1_pyvenv_venv=" $(basename ${VIRTUAL_ENV}) "        # idem
 
 	else
-		RPS1=
+		ps1_pyvenv_anchor=
+		ps1_pyvenv_venv=
 	fi
 }
 
@@ -126,7 +170,7 @@ zle-keymap-select(){
 
 # Update PS1 line init
 zle-line-init(){
-	set_git_branch
+	set_rps1
 	set_vimode
 	zle reset-prompt
 }
