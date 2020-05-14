@@ -83,15 +83,11 @@ let qmark a = ["https://calendar.google.com/"]
 let qmark s = ["https://scholar.google.com/"]
 let qmark d = ["https://drive.google.com/"]
 let qmark z = ["http://www.facebook.com/"]
-let qmark x = ["http://web.skype.com/"]
 let qmark n = ["http://news.bbc.co.uk/"]
-let qmark m = ["http://www.feedly.com/"]
 let qmark y = ["http://www.youtube.com/"]
 let qmark g = ["https://github.com/marceloalcocer"]
 let qmark h = ["https://marceloalcocer.github.io"]
-let qmark j = ["http://www.chemphys.lu.se"]
-let qmark k = ["http://acq.2d.chemphys.lu.se"]
-let qmark l = ["https://trello.com"]
+let qmark f = ["chrome://flags"]
 
 """Site Specific"""
 site "https://mail.google.com/*" {
