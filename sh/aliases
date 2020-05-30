@@ -40,3 +40,6 @@ alias ip='ip -c'
 # based on https://github.com/repro/dig-color
 #
 alias dig='dig-color'
+
+# Calendar
+alias cal='ncal -w -B 5 -A 6'
