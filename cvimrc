@@ -30,6 +30,7 @@ let searchengine oriental = "https://catalog.orientalmotor.com/keyword/all-categ
 let searchengine maxivwiki = "https://wiki.maxiv.lu.se/index.php?search=%s"
 let searchengine node = "https://nodejs.org/api/%s.html"
 let searchengine npm = "https://www.npmjs.com/search?q=%s"
+let searchengine mdn = "https://developer.mozilla.org/en-US/search?q=%s"
 let searchalias yt = "youtube"
 let searchalias wi = "wikipedia"
 let searchalias gs = "scholar"
