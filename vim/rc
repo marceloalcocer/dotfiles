@@ -75,6 +75,7 @@ nnoremap <leader>qw :set wrap!<cr>
 nnoremap <leader>qs :set spell!<cr>
 command Term vs|:term ++curwin
 cnoreabbrev vterm Term
+cnoreabbrev bdd b#\|bd#
 
 " Filetype Handling "
 filetype indent on
