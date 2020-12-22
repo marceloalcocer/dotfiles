@@ -170,12 +170,6 @@ alfresco(){
 	curl -H "cookie: $(cat ~/.alfresco)" "$(cat ${1})" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
 }
 
-# Remote IcePAP CMS
-sicepapcms(){
-	#ssh -f -X controlroom@$1 "icepapcms --all-networks"
-	ssh -X controlroom@$1 "icepapcms --all-networks"
-}
-
 # Colorize dig output
 #
 # based on https://github.com/repro/dig-color
