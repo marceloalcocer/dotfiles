@@ -170,6 +170,11 @@ alfresco(){
 	curl -H "cookie: $(cat ~/.alfresco)" "$(cat ${1})" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
 }
 
+# IcePAP shell
+icepapsh(){
+	rlwrap --command-name=icepapsh nc $1 5000
+}
+
 # Colorize dig output
 #
 # based on https://github.com/repro/dig-color
