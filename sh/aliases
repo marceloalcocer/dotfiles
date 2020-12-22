@@ -46,3 +46,6 @@ alias ip='ip -c'
 # based on https://github.com/repro/dig-color
 #
 alias dig='dig-color +domain=maxiv.lu.se'
+
+# Calendar
+alias cal='ncal -w -B 5 -A 6'
