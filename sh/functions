@@ -153,8 +153,7 @@ alfresco(){
 }
 
 # Remote IcePAP CMS
-sicepapcms(){
-	#ssh -f -X controlroom@$1 "icepapcms --all-networks"
+icepapcms(){
 	ssh -X controlroom@$1 "icepapcms --all-networks"
 }
 
