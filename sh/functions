@@ -172,7 +172,7 @@ alfresco(){
 
 # IcePAP shell
 icepapsh(){
-	rlwrap --command-name=icepapsh nc $1 5000
+	rlwrap --command-name=icepapsh --break-chars= nc $1 5000
 }
 
 # Colorize dig output
