@@ -157,6 +157,11 @@ icepapcms(){
 	ssh -X controlroom@$1 "icepapcms --all-networks"
 }
 
+# IcePAP shell
+icepapsh(){
+	rlwrap --command-name=icepapsh nc $1 5000
+}
+
 # Colorize dig output
 #
 # based on https://github.com/repro/dig-color
