@@ -69,6 +69,7 @@ dotln
 dotdir="${dotbasedir}/python"
 declare -A dotdests=(
 	["yapf.ini"]="${HOME}/.config/yapf/yapf.ini"
+	["rc"]="${HOME}/.pyrc"
 )
 dotln
 
