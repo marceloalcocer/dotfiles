@@ -7,7 +7,7 @@ fi
 # Set PS1 components
 set_ps1_components(){
 	ps1_user=" \u "
-	ps1_host=" \h "
+	ps1_host=" ${HOST} "
 	ps1_wd=" \w "
 	ps1_anchor_host=$'\xEE\x82\xB0'
 	ps1_anchor_wd=$'\xEE\x82\xB0'
