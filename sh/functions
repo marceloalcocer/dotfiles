@@ -47,7 +47,23 @@ set_ps1_components(){
 # Style PS1 components
 style_ps1_components(){
 
-	ps1_rgb_user_block=(128 128 128)
+	case "$USER" in
+		mar*)
+			ps1_rgb_user_block=(215 135 0)
+		;;
+		mal*)
+			ps1_rgb_user_block=(50 50 135)
+		;;
+		root)
+			ps1_rgb_user_block=(135 50 50)
+		;;
+		*)
+			ps1_rgb_user_block=(128 128 128)
+		;;
+	esac
+
+	ps1_foo="128"
+
 	ps1_rgb_user_text=(248 248 242)
 	ps1_rgb_host_block=(96 96 96)
 	ps1_rgb_host_text=(248 248 242)

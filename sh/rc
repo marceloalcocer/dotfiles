@@ -10,6 +10,10 @@ if [ -x /usr/bin/dircolors ]; then                                              
 fi
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'     # GCC
 
+# Set non-ascii hostname
+export HOST="肩車"
+export HOSTNAME=$HOST
+
 # Terminal window title
 #set_xterm_title
 
