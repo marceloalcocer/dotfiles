@@ -7,7 +7,7 @@
 	st = status -s -b
 	br = branch
 	com = commit
-	glog = log --decorate --graph --all
+	glog = log --decorate --graph
 	co = checkout
 [merge]
 	tool = vimdiff
