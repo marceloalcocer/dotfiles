@@ -146,12 +146,6 @@ toggle_touchpad(){
 	fi
 }
 
-# Open alfresco document
-alfresco(){
-	local tmp=$(date | md5sum)
-	curl -H "cookie: $(cat ~/.alfresco)" "$(cat ${1})" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
-}
-
 # Remote IcePAP CMS
 icepapcms(){
 	ssh -X controlroom@$1 "icepapcms --all-networks"
