@@ -103,6 +103,7 @@ let qmark y = ["http://www.youtube.com/"]
 let qmark g = ["https://github.com/marceloalcocer"]
 let qmark h = ["https://marceloalcocer.github.io"]
 let qmark f = ["chrome://flags"]
+let qmark v = ["https://vecka.nu"]
 
 """Site Specific"""
 site "https://mail.google.com/*" {
