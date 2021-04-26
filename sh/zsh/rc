@@ -22,6 +22,7 @@ fi
 HISTFILE=~/.zsh_history
 HISTSIZE=5000
 SAVEHIST=5000
+setopt extended_history
 bindkey -M vicmd "?" vi-history-search-backward
 bindkey -M vicmd "/" vi-history-search-forward
 bindkey -M vicmd "#" history-beginning-search-backward
