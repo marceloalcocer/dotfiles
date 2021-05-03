@@ -151,6 +151,11 @@ icepapcms(){
 	ssh -X controlroom@$1 "icepapcms --all-networks"
 }
 
+# Remote Jive
+jive(){
+	ssh -X $1 "jive"
+}
+
 # IcePAP shell
 icepapsh(){
 	rlwrap --command-name=icepapsh --break-chars= nc $1 5000
