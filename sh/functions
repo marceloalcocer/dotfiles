@@ -156,6 +156,11 @@ jive(){
 	ssh -X $1 "jive"
 }
 
+# Remote astor
+astor(){
+	ssh -X $1 "astor"
+}
+
 # IcePAP shell
 icepapsh(){
 	rlwrap --command-name=icepapsh --break-chars= nc $1 5000
