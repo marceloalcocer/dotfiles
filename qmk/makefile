@@ -5,12 +5,12 @@ BOOTLOADER?=dfu
 
 .PHONY:
 generic:
-	${QMK}/util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}
+	cd ${QMK} && ./util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}
 
 .PHONY:
 left:
-	${QMK}/util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}-split-left
+	cd ${QMK} && ./util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}-split-left
 
 .PHONY:
 right:
-	${QMK}/util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}-split-right
+	cd ${QMK} && ./util/docker_build.sh ${KEYBOARD}:${KEYMAP}:${BOOTLOADER}-split-right
