@@ -56,14 +56,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │        │      │      │  [   │  ]   │  ~   │      │      │  │      │      │      │      │      │      │      │        │
  * ╰────────┴──────┴──────┼──────┼──────┼──────┤      │      │  │      │      ├──────┼──────┼──────┼──────┴──────┴────────╯
  *                        │      │      │      │  =   │  ;   │  │  :   │  =   │      │      │      │
- *                        │      │      │      │      │      │  │      │      │      │      │      │
+ *                        │Alt+F4│      │      │      │      │  │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
     [LOWER] = LAYOUT_split_3x6_5(
       _______, UK_EXLM, UK_DQUO, UK_LCBR, UK_RCBR, UK_PIPE,                                     _______, UK_AMPR, UK_BSLS, UK_EURO,  UK_PND, _______,
       _______, UK_CIRC, UK_DLR,  UK_LPRN, UK_RPRN, UK_GRV,                                      UK_PLUS, UK_MINS, UK_SLSH, UK_ASTR, UK_PERC, _______,
       _______, _______, _______, UK_LBRC, UK_RBRC, UK_TILD,                                     _______, _______, _______, _______, _______, _______,
-                                 _______, _______, _______, UK_EQL, UK_SCLN,  UK_COLN,  KC_EQL, _______, _______, _______
+                                 LALT(KC_F4), _______, _______, UK_EQL, UK_SCLN,  UK_COLN,  KC_EQL, _______, _______, _______
     ),
 /*
  * Raise Layer: Number keys, media, navigation
