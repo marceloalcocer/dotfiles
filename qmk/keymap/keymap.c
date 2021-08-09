@@ -56,14 +56,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * │        │      │      │  [   │  ]   │  ~   │      │      │  │      │      │      │      │      │      │      │        │
  * ╰────────┴──────┴──────┼──────┼──────┼──────┤      │      │  │      │      ├──────┼──────┼──────┼──────┴──────┴────────╯
  *                        │      │      │      │  =   │  ;   │  │  :   │  =   │      │      │      │
- *                        │Alt+F4│      │      │      │      │  │      │      │      │      │      │
+ *                        │      │      │      │      │      │  │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
     [SYMBOL] = LAYOUT_split_3x6_5(
       _______, UK_EXLM, UK_DQUO, UK_LCBR, UK_RCBR, UK_PIPE,                                     _______, UK_AMPR, UK_BSLS, UK_EURO,  UK_PND, _______,
       _______, UK_CIRC, UK_DLR,  UK_LPRN, UK_RPRN, UK_GRV,                                      UK_MINS, UK_PLUS, UK_SLSH, UK_ASTR, UK_PERC, _______,
       _______, _______, _______, UK_LBRC, UK_RBRC, UK_TILD,                                     _______, _______, _______, _______, _______, _______,
-                                 LALT(KC_F4), _______, _______, UK_EQL, UK_SCLN,  UK_COLN,  KC_EQL, _______, _______, _______
+                                 _______, _______, _______, UK_EQL, UK_SCLN,  UK_COLN,  KC_EQL, _______, _______, _______
     ),
 /*
  * Numeric layer
@@ -89,21 +89,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Media layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                              ╭──────┬──────┬──────┬──────┬──────┬────────╮
- * │        │      │      │      │      │      │                              │      │      │      │      │      │        │
+ * │        │MicMut│ Mute │VolDwn│VolUp │      │                              │ MLeft│ Mdown│ MUp  │MRight│MBtn1 │ MBtn2  │
  * ├────────┼──────┼──────┼──────┼──────┼──────┤                              ├──────┼──────┼──────┼──────┼──────┼────────┤
- * │ Prev   │ Play │ Next │ Mute │VolDwn│VolUp │                              │ Left │ Down │ Up   │ Right│      │        │
+ * │        │      │ Prev │ Play │ Next │      │                              │ Left │ Down │ Up   │ Right│      │        │
  * ├────────┼──────┼──────┼──────┼──────┼──────┼──────┬──────╮  ╭──────┬──────┼──────┼──────┼──────┼──────┼──────┼────────┤
- * │        │      │      │MicMut│BriDwn│BriUp │      │      │  │      │      │ MLeft│ Mdown│ MUp  │MRight│      │        │
+ * │        │      │      │BriDwn│BriUp │      │      │      │  │      │      │      │      │      │      │      │        │
  * ╰────────┴──────┴──────┼──────┼──────┼──────┤      │      │  │      │      ├──────┼──────┼──────┼──────┴──────┴────────╯
  *                        │      │      │      │      │      │  │      │      │      │      │      │
- *                        │Shtdwn│      │      │      │      │  │      │      │ MBtn1│ MBtn2│Logout│
+ *                        │Alt+F4│      │      │      │      │  │      │      │      │      │Shtdwn│
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
     [MEDIA] = LAYOUT_split_3x6_5(
-      _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
-      KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-      _______, _______, _______, KC_F20,  KC_BRID, KC_BRIU,                                     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
-                                 LCA(KC_END), _______, _______, _______, _______, _______, _______, KC_MS_BTN1, KC_MS_BTN2, LCA(KC_DEL)
+      _______, KC_F20,  KC_MUTE, KC_VOLD, KC_VOLU, _______,                                     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_MS_BTN1, KC_MS_BTN2,
+      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+      _______, _______, _______, KC_BRID, KC_BRIU, _______,                                     _______, _______, _______, _______, _______, _______,
+                             LALT(KC_F4), _______, _______, _______, _______, _______, _______, _______, _______, LCA(KC_END)
     ),
 // /*
 //  * Layer template
