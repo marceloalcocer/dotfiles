@@ -17,15 +17,15 @@
 #include "keymap_uk.h"
 
 enum layers {
-    QWERTY = 0,
-    LOWER,
-    RAISE,
-    ADJUST
+    ALPHA = 0,
+    SYMBOL,
+    NUMERIC,
+    MEDIA
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
- * Base Layer: QWERTY
+ * Alpha layer (base)
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                              ╭──────┬──────┬──────┬──────┬──────┬────────╮
  * │  ` ¬   │   Q  │   W  │   E  │   R  │   T  │                              │   Y  │   U  │   I  │   O  │   P  │  - _   │
@@ -39,14 +39,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  *
  */
-    [QWERTY] = LAYOUT_split_3x6_5(
+    [ALPHA] = LAYOUT_split_3x6_5(
       UK_GRV,       KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    UK_MINS,
       UK_BSLS,      KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                         KC_H,    KC_J,    KC_K,    KC_L,    UK_SCLN, UK_HASH,
       KC_LCTL,                 KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                              KC_N,    KC_M,    UK_COMM, UK_DOT,  UK_SLSH, UK_QUOT,
-              XXXXXXX, KC_LGUI,  MT(MOD_LSFT,KC_DEL), LT(RAISE, KC_TAB), LT(LOWER, KC_ESC), LT(LOWER, KC_ENT), LT(RAISE, KC_SPC), MT(MOD_RSFT,KC_BSPC), KC_LALT, XXXXXXX
+              XXXXXXX, KC_LGUI,  MT(MOD_LSFT,KC_DEL), LT(NUMERIC, KC_TAB), LT(SYMBOL, KC_ESC), LT(SYMBOL, KC_ENT), LT(NUMERIC, KC_SPC), MT(MOD_RSFT,KC_BSPC), KC_LALT, XXXXXXX
     ),
 /*
- * Lower Layer: Symbols
+ * Symbols layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                              ╭──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │  !   │  "   │  {   │  }   │  │   │                              │      │  &   │  \   │  €   │  £   │        │
@@ -59,14 +59,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │Alt+F4│      │      │      │      │  │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [LOWER] = LAYOUT_split_3x6_5(
+    [SYMBOL] = LAYOUT_split_3x6_5(
       _______, UK_EXLM, UK_DQUO, UK_LCBR, UK_RCBR, UK_PIPE,                                     _______, UK_AMPR, UK_BSLS, UK_EURO,  UK_PND, _______,
       _______, UK_CIRC, UK_DLR,  UK_LPRN, UK_RPRN, UK_GRV,                                      UK_MINS, UK_PLUS, UK_SLSH, UK_ASTR, UK_PERC, _______,
       _______, _______, _______, UK_LBRC, UK_RBRC, UK_TILD,                                     _______, _______, _______, _______, _______, _______,
                                  LALT(KC_F4), _______, _______, UK_EQL, UK_SCLN,  UK_COLN,  KC_EQL, _______, _______, _______
     ),
 /*
- * Raise Layer: Number keys, media, navigation
+ * Numeric layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                              ╭──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │   1  │  2   │  3   │  4   │  5   │                              │  6   │  7   │  8   │  9   │  0   │        │
@@ -79,14 +79,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │Shtdwn│      │      │      │      │  │      │      │ MBtn1│ MBtn2│Logout│
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [RAISE] = LAYOUT_split_3x6_5(
+    [NUMERIC] = LAYOUT_split_3x6_5(
       _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
       KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_VOLD, KC_VOLU,                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
       _______, _______, _______, KC_F20,  KC_BRID, KC_BRIU,                                     KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, _______, _______,
                                  LCA(KC_END), _______, _______, _______, _______, _______, _______, KC_MS_BTN1, KC_MS_BTN2, LCA(KC_DEL)
     ),
 /*
- * Adjust Layer: Function keys, RGB
+ * Media layer
  *
  * ╭────────┬──────┬──────┬──────┬──────┬──────╮                              ╭──────┬──────┬──────┬──────┬──────┬────────╮
  * │        │  F1  │ F2   │ F3   │ F4   │ F5   │                              │ F6   │ F7   │ F8   │ F9   │ F10  │        │
@@ -99,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        │      │      │      │      │      │  │      │      │      │      │      │
  *                        ╰──────┴──────┴──────┴──────┴──────╯  ╰──────┴──────┴──────┴──────┴──────╯
  */
-    [ADJUST] = LAYOUT_split_3x6_5(
+    [MEDIA] = LAYOUT_split_3x6_5(
       _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                                       KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, KC_F11,  KC_F12,  _______,
       _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
@@ -128,7 +128,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, LOWER, RAISE, ADJUST);
+	return update_tri_layer_state(state, SYMBOL, NUMERIC, MEDIA);
 }
 
 #ifdef OLED_DRIVER_ENABLE
@@ -167,17 +167,17 @@ static void render_status(void) {
     // Host Keyboard Layer Status
     oled_write_P(PSTR("Layer: "), false);
     switch (get_highest_layer(layer_state)) {
-        case QWERTY:
-            oled_write_P(PSTR("Default\n"), false);
+        case ALPHA:
+            oled_write_P(PSTR("Alpha\n"), false);
             break;
-        case LOWER:
-            oled_write_P(PSTR("Lower\n"), false);
+        case SYMBOL:
+            oled_write_P(PSTR("Symbol\n"), false);
             break;
-        case RAISE:
-            oled_write_P(PSTR("Raise\n"), false);
+        case NUMERIC:
+            oled_write_P(PSTR("Numeric\n"), false);
             break;
-        case ADJUST:
-            oled_write_P(PSTR("Adjust\n"), false);
+        case MEDIA:
+            oled_write_P(PSTR("Media\n"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined\n"), false);
