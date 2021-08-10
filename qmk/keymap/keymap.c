@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       UK_GRV,   KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                             KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    UK_MINS,
       UK_BSLS,  KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                             KC_H,    KC_J,    KC_K,    KC_L,    UK_SCLN, UK_HASH,
       KC_LGUI,  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,                                             KC_N,    KC_M,    UK_COMM, UK_DOT,  UK_SLSH, UK_QUOT,
-           XXXXXXX, MT(MOD_LCTL, KC_CAPS),  MT(MOD_LSFT,KC_DEL), LT(NUMERIC, KC_TAB), LT(SYMBOL, KC_ESC),     LT(SYMBOL, KC_ENT), LT(NUMERIC, KC_SPC), MT(MOD_RSFT,KC_BSPC), KC_LALT, XXXXXXX
+           XXXXXXX, LCTL_T(KC_CAPS), LSFT_T(KC_DEL), LT(NUMERIC, KC_TAB), LT(SYMBOL, KC_ESC),     LT(SYMBOL, KC_ENT), LT(NUMERIC, KC_SPC), RSFT_T(KC_BSPC), KC_LALT, XXXXXXX
     ),
 /*
  * Symbols layer
