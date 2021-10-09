@@ -238,6 +238,6 @@ wol(){
 	done
 
 	# Send magic packet
-	echo -en ${magic} | nc -ub ${addr} ${port}
+	echo -en ${magic} | nc -Nub -w 0 ${addr} ${port}
 
 }
