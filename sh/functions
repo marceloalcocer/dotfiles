@@ -154,7 +154,6 @@ bin2hex(){
 	echo "ibase=2; obase=16; ${1}" | bc
 }
 
-
 # Toggle touchpad
 toggle_touchpad(){
 	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad send-events)" = "'enabled'" ]; then
@@ -162,12 +161,6 @@ toggle_touchpad(){
 	else
 		gsettings set org.gnome.desktop.peripherals.touchpad send-events 'enabled'
 	fi
-}
-
-# Open alfresco document
-alfresco(){
-	local tmp=$(date | md5sum)
-	curl -H "cookie: $(cat ~/.alfresco)" "$(cat ${1})" --output "${tmp}" && libreoffice "${tmp}" && rm "${tmp}"
 }
 
 # IcePAP shell
@@ -186,4 +179,67 @@ dig-color(){
 		/^;;/    { print "\033[39m"$0 }
 		END      { print "\033[0m" }
 	';
+}
+
+# Wake on lan
+#
+#  Send WoL magic packet over UDP
+#
+#  Usage:
+#
+#    wol MAC ADDRESS [PORT]
+#    wol FILE
+#
+#  Examples:
+#
+#    wol 01:02:03:04:05:06 192.168.0.255 7    # Send magic packet to 01:02:03:04:05:06
+#                                             # via UDP broadcast to 192.168.0.255, port 7
+#
+#    wol 01:02:03:04:05:06 192.168.0.255      # Send magic packet to 01:02:03:04:05:06
+#                                             # via UDP broadcast to 192.168.0.255, port 9
+#                                             # (dicard protocol port)
+#
+#    wol file.wol                             # Send magic packet to MAC in file.wol
+#                                             # via UDP broadcast to address in file.wol, port
+#                                             # in file.wol (defaults to 9)
+#
+#  Format of FILE: MAC ADDRESS PORT
+#
+#  Magic packet structure: https://en.wikipedia.org/wiki/Wake-on-LAN#Magic_packet
+#
+wol(){
+
+	# Parse args
+	local mac=
+	local addr=
+	local port=
+	if [[ -e $1 ]]; then
+		mac=$(awk '//{print $1}' $1)
+		addr=$(awk '//{print $2}' $1)
+		port=$(awk '//{print $3}' $1)
+	else
+		mac=$1
+		addr=$2
+		port=$3
+	fi
+	port=${port:-9}						# Default to unofficial WoL UDP port (9)
+
+	# Append header bytes (6 * 0xFF) to magic packet payload
+	local magic=""
+	local header="\xFF"
+	for i in {1..6}; do
+		magic+=$(echo -en ${header})
+	done
+
+	# Concatenate MAC bytes (16 * MAC) to magic packet payload
+	mac=${mac//:/}
+	for i in {1..16}; do
+		for ((nibble=0; nibble<${#mac}; nibble+=2)); do
+			magic+=$(echo -en "\x${mac:$nibble:2}")
+		done
+	done
+
+	# Send magic packet
+	echo -en ${magic} | nc -Nub -w 0 ${addr} ${port}
+
 }

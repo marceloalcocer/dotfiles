@@ -24,6 +24,7 @@ let searchengine thesaurus = "http://thesaurus.com/browse/%s?s=t"
 let searchengine cplusplus = "http://www.cplusplus.com/search.do?q=%s"
 let searchengine stackoverflow= "http://stackoverflow.com/search?q=%s"
 let searchengine ubuntu = "https://packages.ubuntu.com/search?keywords=%s&searchon=names&suite=all&section=all"
+let searchengine gentoo = "https://packages.gentoo.org/packages/search?q=%s"
 let searchengine pypi = "https://pypi.org/search/?q=%s"
 let searchengine unicode = "https://unicodelookup.com/#%s/1"
 let searchengine oriental = "https://catalog.orientalmotor.com/keyword/all-categories?&key=all&keycateg=100&keyprod=&SchType=1&keyword=%s"
@@ -32,6 +33,9 @@ let searchengine node = "https://nodejs.org/api/%s.html"
 let searchengine npm = "https://www.npmjs.com/search?q=%s"
 let searchengine mdn = "https://developer.mozilla.org/en-US/search?q=%s"
 let searchengine emoji = "https://emojipedia.org/search/?q=%s"
+let searchengine icepapcmd = "http://kits-maxiv.gitlab-pages.maxiv.lu.se/doc-maxiv-icepap-user/command_set.html#cmd-%s"
+let searchengine icepapcfg = "http://kits-maxiv.gitlab-pages.maxiv.lu.se/doc-maxiv-icepap-user/driver_configuration.html#cfg-%s"
+let searchengine webjive = "https://webjive.maxiv.lu.se/%s"
 let searchalias yt = "youtube"
 let searchalias wi = "wikipedia"
 let searchalias gs = "scholar"
@@ -45,11 +49,15 @@ let searchalias th = "thesaurus"
 let searchalias cpp = "cplusplus"
 let searchalias so = "stackoverflow"
 let searchalias ub = "ubuntu"
+let searchalias gt = "gentoo"
 let searchalias pi = "pypi"
 let searchalias un = "unicode"
 let searchalias mw = "maxivwiki"
 let searchalias njs = "node"
 let searchalias npm = "npm"
+let searchalias cmd = "icepapcmd"
+let searchalias cfg = "icepapcfg"
+let searchalias wj = "webjive"
 let completionengines = ["google", "wikipedia", "maps", "scholar", "lexin", "python", "scipy", "ubuntu", "pypi"]
 
 """Custom Buffer"""
@@ -92,9 +100,10 @@ let qmark d = ["https://drive.google.com/"]
 let qmark z = ["http://www.facebook.com/"]
 let qmark n = ["http://news.bbc.co.uk/"]
 let qmark y = ["http://www.youtube.com/"]
-let qmark g = ["https://github.com/marceloalcocer"]
+let qmark g = ["https://github.com/"]
 let qmark h = ["https://marceloalcocer.github.io"]
 let qmark f = ["chrome://flags"]
+let qmark v = ["https://vecka.nu"]
 
 """Site Specific"""
 site "https://mail.google.com/*" {

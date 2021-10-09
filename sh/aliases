@@ -8,8 +8,9 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto -E'
 alias fgrep='fgrep --color=auto -E'
 alias egrep='egrep --color=auto -E'
-alias ll='ls --group-directories-first -l'
-alias la='ls --group-directories-first -la'
+alias ll='ls --group-directories-first --time-style=long-iso -l'
+alias la='ls --group-directories-first --time-style=long-iso -la'
+
 
 # Clipboard
 alias clipboard='xclip -i -selection clipboard'
