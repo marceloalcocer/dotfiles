@@ -40,6 +40,9 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
+compdef _icepapcms icepapcms
+compdef _jive jive
+compdef _astor astor
 compdef _icepapsh icepapsh
 
 # Prompt string

@@ -220,18 +220,35 @@ netfs(){
 
 }
 
-# IcePAP shell completion
-_icepapsh_hosts(){
+# Inventory hosts
+_inventory_grep(){
+	local inventories=("${(@f)$(cat ${HOME}/.inventories)}")
 	curl \
 	--silent \
-	$@ \
+	$inventories \
 	| grep \
 	--extended \
 	--only-matching \
 	--no-filename \
-	'^[[:alnum:]\-]*ctl\-ipap\-[[:digit:]]{2}'
+	${1}
 }
-_icepapsh(){
-	local inventories=("${(@f)$(cat ${HOME}/.icepapsh_inventories)}")
-	_arguments "1:host:($(_icepapsh_hosts $inventories))"
+_inventory_ccs(){
+	_inventory_grep '^[[:alnum:]\-]*\-cc\-[[:digit:]]{1}'
 }
+_inventory_ipaps(){
+	_inventory_grep '^[[:alnum:]\-]*ctl\-ipap\-[[:digit:]]{2}'
+}
+
+# cc completions
+_complete_ccs(){
+	_arguments "1:host:($(_inventory_ccs))"
+}
+_icepapcms(){ _complete_ccs }
+_jive(){ _complete_ccs }
+_astor(){ _complete_ccs }
+
+# IcePAP completions
+_complete_ipaps(){
+	_arguments "1:host:($(_inventory_ipaps))"
+}
+_icepapsh(){ _complete_ipaps }
