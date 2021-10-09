@@ -219,3 +219,19 @@ netfs(){
 	done
 
 }
+
+# IcePAP shell completion
+_icepapsh_hosts(){
+	curl \
+	--silent \
+	$@ \
+	| grep \
+	--extended \
+	--only-matching \
+	--no-filename \
+	'^[[:alnum:]\-]*ctl\-ipap\-[[:digit:]]{2}'
+}
+_icepapsh(){
+	local inventories=("${(@f)$(cat ${HOME}/.icepapsh_inventories)}")
+	_arguments "1:host:($(_icepapsh_hosts $inventories))"
+}

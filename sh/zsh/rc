@@ -40,6 +40,7 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 autoload -Uz compinit
 compinit
+compdef _icepapsh icepapsh
 
 # Prompt string
 set_ps1
