@@ -222,7 +222,8 @@ netfs(){
 
 # Inventory hosts
 _inventory_grep(){
-	local inventories=("${(@f)$(cat ${HOME}/.inventories)}")
+	local inventories
+	inventories=("${(@f)$(cat ${HOME}/.inventories)}")
 	curl \
 	--silent \
 	$inventories \
