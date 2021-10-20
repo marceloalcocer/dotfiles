@@ -28,10 +28,6 @@ set spellfile=~/.vim/spell/custom-misc.utf-8.add
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
-"set cursorline
-"set undofile
-" GUI configuration "
-set guifont=deja\ vu\ sans\ mono\ 12
 colorscheme slate
 
 " Mappings "
@@ -62,10 +58,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-nnoremap <C-w><k2> :resize 35<cr>
-nnoremap <C-w><k8> :resize 50<cr>
-nnoremap <C-w><k4> :vertical resize 150<cr>
-nnoremap <C-w><k6> :vertical resize 200<cr>
 nnoremap <leader>s 1z=
 nnoremap <leader>S z=
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
