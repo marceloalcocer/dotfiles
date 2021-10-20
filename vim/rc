@@ -44,14 +44,6 @@ nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
 nnoremap <A-i> ^
 nnoremap <A-a> $
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 nnoremap <C-j> <C-w>j
