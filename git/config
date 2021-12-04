@@ -5,10 +5,11 @@
 	editor = vim
 [alias]
 	st = status -s -b
-	br = branch
-	com = commit
-	glog = log --decorate --graph
+	br = branch -vv
+	cm = commit
+	lg = log --decorate --graph
 	co = checkout
+	rt = remote -vv
 [merge]
 	tool = vimdiff
 [init]
