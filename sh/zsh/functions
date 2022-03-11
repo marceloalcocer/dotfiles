@@ -177,8 +177,8 @@ zle-line-init(){
 
 # Network filesystems
 #
-#   netfs mount [maralc | groups | alfresco | nas | all]
-#   netfs umount [maralc | groups | alfresco | nas | all]
+#   netfs mount [mxn_maralc | mxn_groups | alfresco | mxn | all]
+#   netfs umount [mxn_maralc | mxn_groups | alfresco | mxn | all]
 #
 #   'nas' mounts both 'maralc' and 'groups' network filesystems.
 #   'all' or no argument mounts all network filesystem.
@@ -197,16 +197,16 @@ netfs(){
 
 	# Build command strings
 	declare -A cmds
-	cmds[maralc]="${mountcmd} ${HOME}/mnt/maralc"
-	cmds[groups]="${mountcmd} ${HOME}/mnt/groups"
+	cmds[mxn_maralc]="${mountcmd} ${HOME}/mnt/mxn/maralc"
+	cmds[mxn_groups]="${mountcmd} ${HOME}/mnt/mxn/groups"
 	cmds[alfresco]="sudo OPENSSL_CONF=/home/maralc/.openssl.cnf ${mountcmd} ${HOME}/mnt/alfresco"
 
 	# Validate filesystem selection
 	declare -a filesystems
 	if [[ $# -lt 2 ]] || [[ ${2} == "all" ]]; then
-		filesystems=("maralc" "groups" "alfresco")
-	elif [[ ${2} == "nas" ]]; then
-		filesystems=("maralc" "groups")
+		filesystems=("mxn_maralc" "mxn_groups" "alfresco")
+	elif [[ ${2} == "mxn" ]]; then
+		filesystems=("mxn_maralc" "mxn_groups")
 	elif [[ -v "cmds[${2}]" ]]; then
 		filesystems=("${2}")
 	else
