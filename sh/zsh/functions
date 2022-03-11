@@ -177,10 +177,9 @@ zle-line-init(){
 
 # Network filesystems
 #
-#   netfs mount [mxn_maralc | mxn_groups | alfresco | mxn | all]
-#   netfs umount [mxn_maralc | mxn_groups | alfresco | mxn | all]
+#   netfs mount [all | mxn | sharepoint ]
+#   netfs umount [all | mxn | sharepoint ]
 #
-#   'nas' mounts both 'maralc' and 'groups' network filesystems.
 #   'all' or no argument mounts all network filesystem.
 #
 netfs(){
@@ -200,6 +199,13 @@ netfs(){
 	cmds[mxn_maralc]="${mountcmd} ${HOME}/mnt/mxn/maralc"
 	cmds[mxn_groups]="${mountcmd} ${HOME}/mnt/mxn/groups"
 	cmds[alfresco]="sudo OPENSSL_CONF=/home/maralc/.openssl.cnf ${mountcmd} ${HOME}/mnt/alfresco"
+	cmds[sharepoint_science_kits]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/kits"
+	cmds[sharepoint_science_blg]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/blg"
+	cmds[sharepoint_science_bls]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/bls"
+	cmds[sharepoint_docs_a]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/a"
+	cmds[sharepoint_docs_b]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/b"
+	cmds[sharepoint_docs_c]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
+	cmds[sharepoint_docs_d]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
 
 	# Validate filesystem selection
 	declare -a filesystems
@@ -207,6 +213,12 @@ netfs(){
 		filesystems=("mxn_maralc" "mxn_groups" "alfresco")
 	elif [[ ${2} == "mxn" ]]; then
 		filesystems=("mxn_maralc" "mxn_groups")
+	elif [[ ${2} == "sharepoint" ]]; then
+		filesystems=("sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
+	elif [[ ${2} == "sharepoint_science" ]]; then
+		filesystems=("sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls")
+	elif [[ ${2} == "sharepoint_docs" ]]; then
+		filesystems=("sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
 	elif [[ -v "cmds[${2}]" ]]; then
 		filesystems=("${2}")
 	else
