@@ -198,19 +198,18 @@ netfs(){
 	declare -A cmds
 	cmds[mxn_maralc]="${mountcmd} ${HOME}/mnt/mxn/maralc"
 	cmds[mxn_groups]="${mountcmd} ${HOME}/mnt/mxn/groups"
-	cmds[alfresco]="sudo OPENSSL_CONF=/home/maralc/.openssl.cnf ${mountcmd} ${HOME}/mnt/alfresco"
-	cmds[sharepoint_science_kits]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/kits"
-	cmds[sharepoint_science_blg]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/blg"
-	cmds[sharepoint_science_bls]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/science/bls"
-	cmds[sharepoint_docs_a]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/a"
-	cmds[sharepoint_docs_b]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/b"
-	cmds[sharepoint_docs_c]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
-	cmds[sharepoint_docs_d]="sudo ${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
+	cmds[sharepoint_science_kits]="${mountcmd} ${HOME}/mnt/sharepoint/science/kits"
+	cmds[sharepoint_science_blg]="${mountcmd} ${HOME}/mnt/sharepoint/science/blg"
+	cmds[sharepoint_science_bls]="${mountcmd} ${HOME}/mnt/sharepoint/science/bls"
+	cmds[sharepoint_docs_a]="${mountcmd} ${HOME}/mnt/sharepoint/docs/a"
+	cmds[sharepoint_docs_b]="${mountcmd} ${HOME}/mnt/sharepoint/docs/b"
+	cmds[sharepoint_docs_c]="${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
+	cmds[sharepoint_docs_d]="${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
 
 	# Validate filesystem selection
 	declare -a filesystems
 	if [[ $# -lt 2 ]] || [[ ${2} == "all" ]]; then
-		filesystems=("mxn_maralc" "mxn_groups" "alfresco")
+		filesystems=("mxn_maralc" "mxn_groups" "sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
 	elif [[ ${2} == "mxn" ]]; then
 		filesystems=("mxn_maralc" "mxn_groups")
 	elif [[ ${2} == "sharepoint" ]]; then
@@ -225,10 +224,17 @@ netfs(){
 		echo "Unknown filesystem: ${2}"
 	fi
 
+	# Set davfs2 config
+	local davfs2_path="${HOME}/.davfs2/davfs2.conf"
+	davfs2_conf > ${davfs2_path}
+
 	# Mount/unmount selected filesystems
 	for filesystem in ${filesystems[@]}; do
 		${=cmds[${filesystem}]}
 	done
+
+	# Remove davfs2 config
+	rm ${davfs2_path}
 
 }
 
