@@ -38,6 +38,7 @@ let searchengine icepapcmd = "http://kits-maxiv.gitlab-pages.maxiv.lu.se/doc-max
 let searchengine icepapcfg = "http://kits-maxiv.gitlab-pages.maxiv.lu.se/doc-maxiv-icepap-user/driver_configuration.html#cfg-%s"
 let searchengine taranta = "https://taranta.maxiv.lu.se/%s"
 let searchengine rt = "https://rt.maxiv.lu.se/Ticket/Display.html?id=%s"
+let searchengine ccdb = "https://cabledbserver.maxiv.lu.se/cable/%s"
 let searchalias yt = "youtube"
 let searchalias wi = "wikipedia"
 let searchalias gs = "scholar"
