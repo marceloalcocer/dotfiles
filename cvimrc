@@ -39,6 +39,7 @@ let searchengine icepapcfg = "http://kits-maxiv.gitlab-pages.maxiv.lu.se/doc-max
 let searchengine taranta = "https://taranta.maxiv.lu.se/%s"
 let searchengine rt = "https://rt.maxiv.lu.se/Ticket/Display.html?id=%s"
 let searchengine ccdb = "https://cabledbserver.maxiv.lu.se/cable/%s"
+let searchengine gitlab = "https://gitlab.maxiv.lu.se/search?search=%s"
 let searchalias yt = "youtube"
 let searchalias wi = "wikipedia"
 let searchalias gs = "scholar"
@@ -62,6 +63,7 @@ let searchalias npm = "npm"
 let searchalias cmd = "icepapcmd"
 let searchalias cfg = "icepapcfg"
 let searchalias ta = "taranta"
+let searchalias gl = "gitlab"
 let completionengines = ["google", "wikipedia", "maps", "scholar", "lexin", "python", "scipy", "ubuntu", "pypi"]
 
 """Custom Buffer"""
