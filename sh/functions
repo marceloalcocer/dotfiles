@@ -161,6 +161,16 @@ astor(){
 	ssh -X $1 "astor"
 }
 
+# Remote itango
+itango(){
+	ssh -X $1 "itango"
+}
+
+# Remote spock
+spock(){
+	ssh -X $1 "spock" "${@:2}"
+}
+
 # IcePAP shell
 icepapsh(){
 	rlwrap --command-name=icepapsh --break-chars= nc $1 5000
