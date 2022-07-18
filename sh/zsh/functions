@@ -205,6 +205,7 @@ netfs(){
 	cmds[sharepoint_docs_b]="${mountcmd} ${HOME}/mnt/sharepoint/docs/b"
 	cmds[sharepoint_docs_c]="${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
 	cmds[sharepoint_docs_d]="${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
+	cmds[sharepoint_accelerator_as]="${mountcmd} ${HOME}/mnt/sharepoint/accelerator/as"
 
 	# Validate filesystem selection
 	declare -a filesystems
@@ -218,6 +219,8 @@ netfs(){
 		filesystems=("sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls")
 	elif [[ ${2} == "sharepoint_docs" ]]; then
 		filesystems=("sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
+	elif [[ ${2} == "sharepoint_accelerator" ]]; then
+		filesystems=("sharepoint_accelerator_as")
 	elif [[ -v "cmds[${2}]" ]]; then
 		filesystems=("${2}")
 	else
