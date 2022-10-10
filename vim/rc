@@ -64,7 +64,7 @@ nnoremap <leader>qs :set spell!<cr>
 command Term vs|:term ++curwin
 cnoreabbrev vterm Term
 cnoreabbrev bdd b#\|bd#
-cnoreabbrev html w !chromium-browser "data:text/html;base64,$(pandoc -f gfm -t html \| base64 -w 0)"
+cnoreabbrev gfm2html w !chromium-browser "data:text/html;base64,$(pandoc -f gfm -t html \| base64 -w 0)"
 
 " Filetype Handling "
 filetype indent on
