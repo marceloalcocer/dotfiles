@@ -206,6 +206,7 @@ netfs(){
 	cmds[sharepoint_docs_c]="${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
 	cmds[sharepoint_docs_d]="${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
 	cmds[sharepoint_accelerator_as]="${mountcmd} ${HOME}/mnt/sharepoint/accelerator/as"
+	cmds[sharepoint_projects_portfolio]="${mountcmd} ${HOME}/mnt/sharepoint/projects/portfolio"
 
 	# Validate filesystem selection
 	declare -a filesystems
