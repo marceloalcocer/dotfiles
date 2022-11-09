@@ -31,7 +31,11 @@ set noexpandtab
 set foldminlines=0
 set history=5000
 set viminfo='100,<50,s10,h,:5000
+
+" Colors "
 colorscheme slate
+highlight Search ctermfg=0
+highlight IncSearch ctermfg=0
 
 " Mappings "
 let mapleader = ","
