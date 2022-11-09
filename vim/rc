@@ -74,5 +74,13 @@ autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
 autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
 let markdown_folding=1
 let markdown_fenced_languages=['python', 'html', 'bash=sh']
+autocmd FileType yaml
+  \ setlocal
+  \ tabstop=2
+  \ softtabstop=2
+  \ shiftwidth=2
+  \ expandtab
+  \ foldmethod=indent
+  \ cursorcolumn
 autocmd BufWinEnter * if &buftype=="terminal" | setlocal noruler nonumber norelativenumber nolist | endif
 
