@@ -72,7 +72,7 @@ filetype plugin on
 autocmd FileType gitcommit setlocal spell textwidth=72
 autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
 autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
-autocmd FileType markdown let g:markdown_folding=1
-autocmd FileType markdown let g:markdown_fenced_languages=['python', 'html', 'bash=sh']
+let markdown_folding=1
+let markdown_fenced_languages=['python', 'html', 'bash=sh']
 autocmd BufWinEnter * if &buftype=="terminal" | setlocal noruler nonumber norelativenumber nolist | endif
 
