@@ -1,4 +1,5 @@
-" System Configuration "
+" General ==================================================================== "
+
 set nomodeline
 set nocompatible
 set encoding=utf-8
@@ -32,12 +33,14 @@ set foldminlines=0
 set history=5000
 set viminfo='100,<50,s10,h,:5000
 
-" Colors "
+" Colors ===================================================================== "
+
 colorscheme slate
 highlight Search ctermfg=0
 highlight IncSearch ctermfg=0
 
-" Mappings "
+" Mappings =================================================================== "
+
 let mapleader = ","
 map <leader>t :bn<cr>
 map <leader>r :bp<cr>
@@ -70,7 +73,8 @@ cnoreabbrev vterm Term
 cnoreabbrev bdd b#\|bd#
 cnoreabbrev gfm2html w !chromium-browser "data:text/html;base64,$(pandoc -f gfm -t html \| base64 -w 0)"
 
-" Filetype Handling "
+" Filetype handling ========================================================== "
+
 filetype indent on
 filetype plugin on
 autocmd FileType gitcommit setlocal spell textwidth=72
