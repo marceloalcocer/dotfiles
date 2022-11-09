@@ -38,6 +38,7 @@ set viminfo='100,<50,s10,h,:5000
 colorscheme slate
 highlight Search ctermfg=0
 highlight IncSearch ctermfg=0
+highlight CursorColumn ctermbg=0
 
 " Mappings =================================================================== "
 
