@@ -177,10 +177,9 @@ zle-line-init(){
 
 # Network filesystems
 #
-#   netfs mount [maralc | groups | alfresco | nas | all]
-#   netfs umount [maralc | groups | alfresco | nas | all]
+#   netfs mount [all | mxn | sharepoint ]
+#   netfs umount [all | mxn | sharepoint ]
 #
-#   'nas' mounts both 'maralc' and 'groups' network filesystems.
 #   'all' or no argument mounts all network filesystem.
 #
 netfs(){
@@ -197,26 +196,48 @@ netfs(){
 
 	# Build command strings
 	declare -A cmds
-	cmds[maralc]="${mountcmd} ${HOME}/mnt/maralc"
-	cmds[groups]="${mountcmd} ${HOME}/mnt/groups"
-	cmds[alfresco]="sudo OPENSSL_CONF=/home/maralc/.openssl.cnf ${mountcmd} ${HOME}/mnt/alfresco"
+	cmds[mxn_maralc]="${mountcmd} ${HOME}/mnt/mxn/maralc"
+	cmds[mxn_groups]="${mountcmd} ${HOME}/mnt/mxn/groups"
+	cmds[sharepoint_science_kits]="${mountcmd} ${HOME}/mnt/sharepoint/science/kits"
+	cmds[sharepoint_science_blg]="${mountcmd} ${HOME}/mnt/sharepoint/science/blg"
+	cmds[sharepoint_science_bls]="${mountcmd} ${HOME}/mnt/sharepoint/science/bls"
+	cmds[sharepoint_docs_a]="${mountcmd} ${HOME}/mnt/sharepoint/docs/a"
+	cmds[sharepoint_docs_b]="${mountcmd} ${HOME}/mnt/sharepoint/docs/b"
+	cmds[sharepoint_docs_c]="${mountcmd} ${HOME}/mnt/sharepoint/docs/c"
+	cmds[sharepoint_docs_d]="${mountcmd} ${HOME}/mnt/sharepoint/docs/d"
+	cmds[sharepoint_accelerator_as]="${mountcmd} ${HOME}/mnt/sharepoint/accelerator/as"
 
 	# Validate filesystem selection
 	declare -a filesystems
 	if [[ $# -lt 2 ]] || [[ ${2} == "all" ]]; then
-		filesystems=("maralc" "groups" "alfresco")
-	elif [[ ${2} == "nas" ]]; then
-		filesystems=("maralc" "groups")
+		filesystems=("mxn_maralc" "mxn_groups" "sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d" "sharepoint_accelerator_as")
+	elif [[ ${2} == "mxn" ]]; then
+		filesystems=("mxn_maralc" "mxn_groups")
+	elif [[ ${2} == "sharepoint" ]]; then
+		filesystems=("sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
+	elif [[ ${2} == "sharepoint_science" ]]; then
+		filesystems=("sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls")
+	elif [[ ${2} == "sharepoint_docs" ]]; then
+		filesystems=("sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
+	elif [[ ${2} == "sharepoint_accelerator" ]]; then
+		filesystems=("sharepoint_accelerator_as")
 	elif [[ -v "cmds[${2}]" ]]; then
 		filesystems=("${2}")
 	else
 		echo "Unknown filesystem: ${2}"
 	fi
 
+	# Set davfs2 config
+	local davfs2_path="${HOME}/.davfs2/davfs2.conf"
+	davfs2_conf > ${davfs2_path}
+
 	# Mount/unmount selected filesystems
 	for filesystem in ${filesystems[@]}; do
 		${=cmds[${filesystem}]}
 	done
+
+	# Remove davfs2 config
+	rm ${davfs2_path}
 
 }
 
