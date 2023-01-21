@@ -28,5 +28,8 @@ export GROFF_NO_SGR=1                                           # For Konsole an
 # Terminal window title
 #set_xterm_title
 
+# Extend PATH
+export PATH=$PATH:$HOME/.local/bin
+
 # Python rc
 export PYTHONSTARTUP="${HOME}/.pyrc"
