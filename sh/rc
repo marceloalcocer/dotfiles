@@ -25,12 +25,12 @@ export LESS_TERMCAP_ZO=$(tput ssupm)
 export LESS_TERMCAP_ZW=$(tput rsupm)
 export GROFF_NO_SGR=1                                           # For Konsole and Gnome-terminal
 
+# Extend PATH
+export PATH=$PATH:$HOME/.local/bin
+
 # Set non-ascii hostname
 export HOST="大腰"
 export HOSTNAME=$HOST
-
-# Terminal window title
-#set_xterm_title
 
 # Python rc
 export PYTHONSTARTUP="${HOME}/.pyrc"

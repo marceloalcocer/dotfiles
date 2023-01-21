@@ -8,6 +8,7 @@
 	br = branch -vv
 	cm = commit
 	lg = log --decorate --graph
+	la = log --decorate --graph --all
 	co = checkout
 	rt = remote -vv
 [merge]

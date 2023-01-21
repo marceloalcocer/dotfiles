@@ -13,19 +13,15 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "workbench.colorTheme": "Monokai",
-    "window.zoomLevel": 0,
-    "python.pythonPath": "/usr/bin/python3",
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "python.formatting.provider": "yapf",
     "python.formatting.yapfArgs": [
-        "--style","/home/malcocer/.config/yapf/yapf.ini"
+        "--style","/home/maralc/.config/yapf/yapf.ini"
     ],
     "python.formatting.autopep8Args": [
         "--ignore","W191,E111,E101"
     ],
-    "python.jediEnabled": false,
-    "python.unitTest.unittestEnabled": true,
     "vim.textwidth": 80,
     "vim.cursorStylePerMode.insert": "line",
     "vim.cursorStylePerMode.normal": "block",
@@ -167,81 +163,11 @@
             ]
         }
     ],
-    "cSpell.language": "en-GB",
-    "cSpell.dictionaryDefinitions": [
-        {
-            "name": "custom-misc",
-            "path": "/home/malcocer/.vim/spell/custom-misc.utf-8.add"
-        },
-        {
-            "name": "custom-python",
-            "path": "/home/malcocer/.vim/spell/custom-python.utf-8.add"
-        }
-    ],
-    "cSpell.dictionaries": [
-        "custom-misc"
-    ],
-    "cSpell.languageSettings": [
-        {
-            "languageId": "python",
-            "dictionaries": ["custom-python"]
-        }
-    ],
-    "restructuredtext.linter.run": "onSave",
-    "restructuredtext.linter.extraArgs": [
-        "--ignore","D001"
-    ],
-    "restructuredtext.confPath": "${workspaceFolder}/docs",
     "editor.minimap.renderCharacters": false,
-    "cSpell.diagnosticLevel": "Hint",
-    "cSpell.showStatus": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "window.menuBarVisibility": "toggle",
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "todo-tree.general.tags":[
-        "TODO",
-        "REFACTOR",
-        "ENHANCEMENT"
-    ],
-    "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)*\\s*($TAGS)|^\\s*- \\[ \\])",
-    "todo-tree.highlights.customHighlight": {
-        "TODO": {
-            "iconColour": "#ff0000",
-            "rulerColour": "#ff0000",
-            "background": "#ff0000",
-            "foreground": "white",
-            "opacity": 0.4,
-            "type": "text"
-        },
-        "REFACTOR": {
-            "iconColour": "#ffff00",
-            "rulerColour": "#ffff00",
-            "background": "#ffff00",
-            "foreground": "white",
-            "opacity": 0.4,
-            "type": "text"
-        },
-        "ENHANCEMENT": {
-            "iconColour": "#00ff00",
-            "rulerColour": "#00ff00",
-            "background": "#00ff00",
-            "foreground": "white",
-            "opacity": 0.4,
-            "type": "text"
-        }
-    },
-    "todo-tree.highlights.defaultHighlight": {
-        "iconColour": "#ffffff",
-        "rulerColour": "#ffffff",
-        "background": "#ffffff",
-        "foreground": "white",
-        "opacity": 0.4,
-        "type": "text"
-    },
-    "todo-tree.tree.grouped": true,
-    "todo-tree.tree.showTagsFromOpenFilesOnly": true,
     "editor.fontFamily": "'Hasklig', monospace",
-    "editor.fontLigatures": true,
+    "editor.fontLigatures": true
 }
