@@ -148,27 +148,27 @@ toggle_touchpad(){
 
 # Remote IcePAP CMS
 icepapcms(){
-	ssh -X controlroom@$1 "icepapcms --all-networks"
+	ssh -Yf controlroom@$1 "icepapcms --all-networks"
 }
 
 # Remote Jive
 jive(){
-	ssh -X $1 "jive"
+	ssh -Yf $1 "jive"
 }
 
 # Remote astor
 astor(){
-	ssh -X $1 "astor"
+	ssh -Yf $1 "astor"
 }
 
 # Remote itango
 itango(){
-	ssh -X $1 "itango"
+	ssh -Y $1 "itango"
 }
 
 # Remote spock
 spock(){
-	ssh -X $1 "spock" "${@:2}"
+	ssh -Y $1 "spock" "${@:2}"
 }
 
 # IcePAP shell
