@@ -212,3 +212,10 @@ wol(){
 	echo -en ${magic} | nc -Nub -w 0 ${addr} ${port}
 
 }
+
+# SOCKS over SSH
+sshocks(){
+	local host=$1
+	local port=$2
+	ssh -T -D $port $host
+}
