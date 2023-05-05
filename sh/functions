@@ -148,7 +148,7 @@ toggle_touchpad(){
 
 # Remote IcePAP CMS
 icepapcms(){
-	ssh -Yf controlroom@$1 "icepapcms --all-networks"
+	ssh -Yf $1 "icepapcms --all-networks"
 }
 
 # Remote Jive
