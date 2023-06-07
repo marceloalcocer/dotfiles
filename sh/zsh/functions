@@ -211,7 +211,7 @@ netfs(){
 	# Validate filesystem selection
 	declare -a filesystems
 	if [[ $# -lt 2 ]] || [[ ${2} == "all" ]]; then
-		filesystems=("mxn_maralc" "mxn_groups" "sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d" "sharepoint_accelerator_as")
+		filesystems=("mxn_maralc" "mxn_groups" "sharepoint_science_kits" "sharepoint_science_blg" "sharepoint_science_bls" "sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d" "sharepoint_accelerator_as" "sharepoint_projects_portfolio")
 	elif [[ ${2} == "mxn" ]]; then
 		filesystems=("mxn_maralc" "mxn_groups")
 	elif [[ ${2} == "sharepoint" ]]; then
@@ -222,6 +222,8 @@ netfs(){
 		filesystems=("sharepoint_docs_a" "sharepoint_docs_b" "sharepoint_docs_c" "sharepoint_docs_d")
 	elif [[ ${2} == "sharepoint_accelerator" ]]; then
 		filesystems=("sharepoint_accelerator_as")
+	elif [[ ${2} == "sharepoint_projects" ]]; then
+		filesystems=("sharepoint_projects_portfolio")
 	elif [[ -v "cmds[${2}]" ]]; then
 		filesystems=("${2}")
 	else
