@@ -19,7 +19,7 @@ let searchengine lexin = "http://folkets-lexikon.csc.kth.se/folkets/folkets.html
 let searchengine w3schools = "http://www.google.com/search?sitesearch=www.w3schools.com&as_q=%s"
 let searchengine matplotlib = "https://www.google.com/search?as_q=%s&as_sitesearch=matplotlib.org"
 let searchengine scipy = "https://www.google.com/search?as_q=%s&as_sitesearch=docs.scipy.org"
-let searchengine python = "https://docs.python.org/3.7/search.html?q=%s&check_keywords=yes&area=default"
+let searchengine python = "https://docs.python.org/3/search.html?q=%s"
 let searchengine thesaurus = "http://thesaurus.com/browse/%s?s=t"
 let searchengine cplusplus = "http://www.cplusplus.com/search.do?q=%s"
 let searchengine cppref = "https://en.cppreference.com/mwiki/index.php?title=Special%3ASearch&search=%s"
