@@ -141,10 +141,3 @@ site "https://calendar.google.com/*" {
 	unmap e
 	unmap z
 }
-site "*://feedly.com/*" {
-	unmap j
-	unmap k
-	unmap m
-	unmap v
-	unmap s
-}
