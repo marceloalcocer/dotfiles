@@ -101,7 +101,7 @@ map <Leader>w :tabattach<space>
 """Quick Marks"""
 let qmark q = ["https://mail.google.com"]
 let qmark w = ["http://www.hotmail.com"]
-let qmark e = ["https://webmail.lu.se/"]
+let qmark e = ["https://outlook.office365.com/"]
 let qmark a = ["https://calendar.google.com/"]
 let qmark s = ["https://scholar.google.com/"]
 let qmark d = ["https://drive.google.com/"]
