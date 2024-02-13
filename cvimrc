@@ -1,5 +1,5 @@
 """System Preferences"""
-let homedirectoy = "/home/malcocer"
+let homedirectoy = "/home/maralc"
 let barposition = "bottom"
 let locale = "uk"
 let deafultengine = "google"
