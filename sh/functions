@@ -219,3 +219,8 @@ sshocks(){
 	local port=$2
 	ssh -T -D $port $host
 }
+
+# wttr.in
+wttr(){
+	curl https://v2.wttr.in/$1
+}
