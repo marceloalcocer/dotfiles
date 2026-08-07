@@ -177,12 +177,12 @@ zle-line-init(){
 
 # Network filesystems
 #
-#   netfs mount [all | mxn | sharepoint ]
-#   netfs umount [all | mxn | sharepoint ]
+#   dfs mount [all | mxn | sharepoint ]
+#   dfs umount [all | mxn | sharepoint ]
 #
 #   'all' or no argument mounts all network filesystem.
 #
-netfs(){
+dfs(){
 
 	# Validate mount command selection
 	local mountcmd
