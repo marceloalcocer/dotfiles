@@ -276,3 +276,4 @@ _complete_ipaps(){
 	_arguments "1:host:($(_inventory_ipaps))"
 }
 _complete_icepapsh(){ _complete_ipaps }
+_complete_icepaposc(){ _complete_ipaps }

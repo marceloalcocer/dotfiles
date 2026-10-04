@@ -44,6 +44,7 @@ compdef _complete_icepapcms icepapcms
 compdef _complete_jive jive
 compdef _complete_astor astor
 compdef _complete_icepapsh icepapsh
+compdef _complete_icepaposc icepaposc
 
 # Prompt string
 _set_ps1
