@@ -21,20 +21,11 @@ alias hexdump='hexdump -C'
 # Battery
 alias battery='cat /sys/class/power_supply/BAT0/capacity'
 
-# IcePAP CMS
-alias icepapcms='icepapcms --all-networks'
-
 # pgrep
 alias pgrep='pgrep -a -l -f'
 
 # Polite sudo
 alias please='sudo'
-
-# wttr.in
-alias wttr='curl https://v2.wttr.in/'
-
-# PIL
-alias pil='ssh g-v-cc-0 "cd ~/src/pil/ && python pil.py ${@}"'
 
 # Show directory stack
 alias stackd='dirs -v'
