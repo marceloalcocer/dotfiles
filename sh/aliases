@@ -27,9 +27,6 @@ alias pgrep='pgrep -a -l -f'
 # Polite sudo
 alias please='sudo'
 
-# PIL
-alias pil='ssh g-v-cc-0 "cd ~/src/pil/ && python pil.py ${@}"'
-
 # Show directory stack
 alias stackd='dirs -v'
 
