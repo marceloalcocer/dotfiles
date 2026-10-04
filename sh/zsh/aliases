@@ -2,3 +2,6 @@
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
+
+# History
+alias history="fc -li"

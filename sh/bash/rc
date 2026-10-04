@@ -40,4 +40,4 @@ if ! shopt -oq posix; then
 fi
 
 # Prompt string
-set_ps1
+_set_ps1

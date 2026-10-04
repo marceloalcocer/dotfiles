@@ -1,8 +1,7 @@
-" System Configuration "
+" General ==================================================================== "
+
 set nomodeline
 set nocompatible
-set gfn=deja\ vu\ sans\ mono\ 12
-colorscheme slate
 set encoding=utf-8
 set scrolloff=3
 set autoindent
@@ -12,14 +11,12 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set novisualbell
-"set cursorline
 set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=1
 set number
 set relativenumber
-"set undofile
 set ignorecase
 set smartcase
 set gdefault
@@ -32,8 +29,19 @@ set spellfile=~/.vim/spell/custom-misc.utf-8.add
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+set foldminlines=0
+set history=5000
+set viminfo='100,<50,s10,h,:5000
 
-" Mappings "
+" Colors ===================================================================== "
+
+colorscheme slate
+highlight Search ctermfg=0
+highlight IncSearch ctermfg=0
+highlight CursorColumn ctermbg=0
+
+" Mappings =================================================================== "
+
 let mapleader = ","
 map <leader>t :bn<cr>
 map <leader>r :bp<cr>
@@ -47,43 +55,41 @@ nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
 nnoremap <A-i> ^
 nnoremap <A-a> $
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-nnoremap j gj
-nnoremap k gk
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-nnoremap <C-w><k2> :resize 35<cr>
-nnoremap <C-w><k8> :resize 50<cr>
-nnoremap <C-w><k4> :vertical resize 150<cr>
-nnoremap <C-w><k6> :vertical resize 200<cr>
-nnoremap <leader>s 1z=
-nnoremap <leader>S z=
+nnoremap <leader>qs 1z=
+nnoremap <leader>qS z=
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-nnoremap <leader>qw :set wrap!<cr>
-nnoremap <leader>qs :set spell!<cr>
+nnoremap <leader>w :set wrap!<cr>
+nnoremap <leader>s :set spell!<cr>
+nnoremap <leader>l :set cursorline!<cr>
+nnoremap <leader>c :set cursorcolumn!<cr>
 command Term vs|:term ++curwin
 cnoreabbrev vterm Term
 cnoreabbrev bdd b#\|bd#
+cnoreabbrev gfm2html w !chromium-browser "data:text/html;base64,$(pandoc -s -f gfm -t html \| base64 -w 0)"
 
-" Filetype Handling "
+" Filetype handling ========================================================== "
+
 filetype indent on
 filetype plugin on
 autocmd FileType gitcommit setlocal spell textwidth=72
 autocmd FileType rst nnoremap <leader>m i:math:``<Esc>i
 autocmd FileType rst nnoremap <leader>M a:math:``<Esc>i
-autocmd FileType markdown let g:markdown_folding=1
-autocmd FileType markdown let g:markdown_fenced_languages=['python', 'html', 'bash=sh']
+let markdown_folding=1
+let markdown_fenced_languages=['python', 'html', 'bash=sh']
+autocmd FileType yaml
+  \ setlocal
+  \ tabstop=2
+  \ softtabstop=2
+  \ shiftwidth=2
+  \ expandtab
+  \ foldmethod=indent
+  \ cursorcolumn
 autocmd BufWinEnter * if &buftype=="terminal" | setlocal noruler nonumber norelativenumber nolist | endif
 
