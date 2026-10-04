@@ -267,12 +267,12 @@ _inventory_ipaps(){
 _complete_ccs(){
 	_arguments "1:host:($(_inventory_ccs))"
 }
-_icepapcms(){ _complete_ccs }
-_jive(){ _complete_ccs }
-_astor(){ _complete_ccs }
+_complete_icepapcms(){ _complete_ccs }
+_complete_jive(){ _complete_ccs }
+_complete_astor(){ _complete_ccs }
 
 # IcePAP completions
 _complete_ipaps(){
 	_arguments "1:host:($(_inventory_ipaps))"
 }
-_icepapsh(){ _complete_ipaps }
+_complete_icepapsh(){ _complete_ipaps }
