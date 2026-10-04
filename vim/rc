@@ -55,20 +55,20 @@ nnoremap <A-j> <C-d>
 nnoremap <A-k> <C-u>
 nnoremap <A-i> ^
 nnoremap <A-a> $
-nnoremap j gj
-nnoremap k gk
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
-nnoremap <leader>s 1z=
-nnoremap <leader>S z=
+nnoremap <leader>qs 1z=
+nnoremap <leader>qS z=
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <leader>y "+y
 nnoremap <leader>p "+p
 nnoremap <leader>P "+P
-nnoremap <leader>qw :set wrap!<cr>
-nnoremap <leader>qs :set spell!<cr>
+nnoremap <leader>w :set wrap!<cr>
+nnoremap <leader>s :set spell!<cr>
+nnoremap <leader>l :set cursorline!<cr>
+nnoremap <leader>c :set cursorcolumn!<cr>
 command Term vs|:term ++curwin
 cnoreabbrev vterm Term
 cnoreabbrev bdd b#\|bd#

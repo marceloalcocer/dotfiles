@@ -42,4 +42,4 @@ autoload -Uz compinit
 compinit
 
 # Prompt string
-set_ps1
+_set_ps1

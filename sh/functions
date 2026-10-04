@@ -18,24 +18,24 @@ is_color_term(){
 }
 
 # ANSI select graphic rendition control sequences
-sgr(){               # SGR (https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters)
+_sgr(){               # SGR (https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters)
 	echo $'\x1B['${1}'m'
 }
-sgr_fg8(){           # 8-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
-	echo $(sgr "38;5;${1}")
+_sgr_fg8(){           # 8-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+	echo $(_sgr "38;5;${1}")
 }
-sgr_bg8(){           # 8-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
-	echo $(sgr "48;5;${1}")
+_sgr_bg8(){           # 8-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+	echo $(_sgr "48;5;${1}")
 }
-sgr_fg24(){          # 24-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
-	echo $(sgr "38;2;${1};${2};${3}")
+_sgr_fg24(){          # 24-bit foreground color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
+	echo $(_sgr "38;2;${1};${2};${3}")
 }
-sgr_bg24(){         # 24-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
-	echo $(sgr "48;2;${1};${2};${3}")
+_sgr_bg24(){         # 24-bit background color (https://en.wikipedia.org/wiki/ANSI_escape_code#24-bit)
+	echo $(_sgr "48;2;${1};${2};${3}")
 }
 
 # Set PS1 components (placeholder)
-set_ps1_components(){
+_set_ps1_components(){
 	ps1_user=
 	ps1_host=
 	ps1_wd=
@@ -45,7 +45,7 @@ set_ps1_components(){
 }
 
 # Style PS1 components
-style_ps1_components(){
+_style_ps1_components(){
 
 	ps1_rgb_user_block=(50 50 135)
 	ps1_rgb_user_text=(248 248 242)
@@ -54,19 +54,19 @@ style_ps1_components(){
 	ps1_rgb_wd_block=(64 64 64)
 	ps1_rgb_wd_text=(248 248 242)
 
-	local end=$(sgr 0)
-	local bg_default=$(sgr 49)
-	local fg_user=$(sgr_fg24 ${ps1_rgb_user_text[*]})
-	local bg_user=$(sgr_bg24 ${ps1_rgb_user_block[*]})
-	local fg_anchor_host=$(sgr_fg24 ${ps1_rgb_user_block[*]})
-	local bg_anchor_host=$(sgr_bg24 ${ps1_rgb_host_block[*]})
-	local fg_host=$(sgr_fg24 ${ps1_rgb_host_text[*]})
-	local bg_host=$(sgr_bg24 ${ps1_rgb_host_block[*]})
-	local fg_anchor_wd=$(sgr_fg24 ${ps1_rgb_host_block[*]})
-	local bg_anchor_wd=$(sgr_bg24 ${ps1_rgb_wd_block[*]})
-	local fg_wd=$(sgr_fg24 ${ps1_rgb_wd_text[*]})
-	local bg_wd=$(sgr_bg24 ${ps1_rgb_wd_block[*]})
-	local fg_anchor_prompt=$(sgr_fg24 ${ps1_rgb_wd_block[*]})
+	local end=$(_sgr 0)
+	local bg_default=$(_sgr 49)
+	local fg_user=$(_sgr_fg24 ${ps1_rgb_user_text[*]})
+	local bg_user=$(_sgr_bg24 ${ps1_rgb_user_block[*]})
+	local fg_anchor_host=$(_sgr_fg24 ${ps1_rgb_user_block[*]})
+	local bg_anchor_host=$(_sgr_bg24 ${ps1_rgb_host_block[*]})
+	local fg_host=$(_sgr_fg24 ${ps1_rgb_host_text[*]})
+	local bg_host=$(_sgr_bg24 ${ps1_rgb_host_block[*]})
+	local fg_anchor_wd=$(_sgr_fg24 ${ps1_rgb_host_block[*]})
+	local bg_anchor_wd=$(_sgr_bg24 ${ps1_rgb_wd_block[*]})
+	local fg_wd=$(_sgr_fg24 ${ps1_rgb_wd_text[*]})
+	local bg_wd=$(_sgr_bg24 ${ps1_rgb_wd_block[*]})
+	local fg_anchor_prompt=$(_sgr_fg24 ${ps1_rgb_wd_block[*]})
 	local bg_anchor_prompt=${bg_default}
 
 	ps1_user="${fg_user}${bg_user}${ps1_user}${end}"
@@ -87,15 +87,10 @@ ps1(){
 set_xterm_title(){
 	case "$TERM" in
 		xterm*|rxvt*)
-			set_ps1_components
+			_set_ps1_components
 			echo $'\x1B]0;'$(ps1)$'\x07'
 	    ;;
 	esac
-}
-
-# Listings
-lc(){
-	ll --color $1 | less -R
 }
 
 # su with xauth
@@ -218,4 +213,9 @@ sshocks(){
 	local host=$1
 	local port=$2
 	ssh -T -D $port $host
+}
+
+# wttr.in
+wttr(){
+	curl https://v2.wttr.in/$1
 }
