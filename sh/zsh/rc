@@ -46,4 +46,4 @@ compdef _astor astor
 compdef _icepapsh icepapsh
 
 # Prompt string
-set_ps1
+_set_ps1
